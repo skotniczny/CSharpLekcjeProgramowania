@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Łańcuchy", "Łańcuchy\Ł
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parzystość", "Parzystość\Parzystość.csproj", "{D85A4FE7-4A6F-4E4E-A0EE-F87C93A5F872}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZamianaParametrów", "ZamianaParametrów\ZamianaParametrów.csproj", "{00FD8A28-6786-4E37-92F1-E31D847676C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{D85A4FE7-4A6F-4E4E-A0EE-F87C93A5F872}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D85A4FE7-4A6F-4E4E-A0EE-F87C93A5F872}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D85A4FE7-4A6F-4E4E-A0EE-F87C93A5F872}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00FD8A28-6786-4E37-92F1-E31D847676C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00FD8A28-6786-4E37-92F1-E31D847676C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00FD8A28-6786-4E37-92F1-E31D847676C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00FD8A28-6786-4E37-92F1-E31D847676C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
