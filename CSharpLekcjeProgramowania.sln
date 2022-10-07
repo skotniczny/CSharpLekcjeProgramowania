@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hello", "Hello\Hello.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ŚredniaArytmetyczna", "ŚredniaArytmetyczna\ŚredniaArytmetyczna.csproj", "{065C3DC8-7F15-4C93-82F5-8627007FE332}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RównanieKwadratowe", "RównanieKwadratowe\RównanieKwadratowe.csproj", "{A81DA870-CD8E-4995-BFA6-D4634144859B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{065C3DC8-7F15-4C93-82F5-8627007FE332}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{065C3DC8-7F15-4C93-82F5-8627007FE332}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{065C3DC8-7F15-4C93-82F5-8627007FE332}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A81DA870-CD8E-4995-BFA6-D4634144859B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A81DA870-CD8E-4995-BFA6-D4634144859B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A81DA870-CD8E-4995-BFA6-D4634144859B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A81DA870-CD8E-4995-BFA6-D4634144859B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
