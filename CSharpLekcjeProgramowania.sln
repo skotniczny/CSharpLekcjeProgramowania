@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RównanieKwadratowe", "Rów
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RównanieKwadratoweZespolone", "RównanieKwadratoweZespolone\RównanieKwadratoweZespolone.csproj", "{C4E66B6A-FB78-425A-98BF-9D2322C84D7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Łańcuchy", "Łańcuchy\Łańcuchy.csproj", "{735525AE-C7D7-40FE-BFA0-0BC817C213CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C4E66B6A-FB78-425A-98BF-9D2322C84D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4E66B6A-FB78-425A-98BF-9D2322C84D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4E66B6A-FB78-425A-98BF-9D2322C84D7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{735525AE-C7D7-40FE-BFA0-0BC817C213CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{735525AE-C7D7-40FE-BFA0-0BC817C213CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{735525AE-C7D7-40FE-BFA0-0BC817C213CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{735525AE-C7D7-40FE-BFA0-0BC817C213CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
