@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RównanieKwadratoweZespolon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Łańcuchy", "Łańcuchy\Łańcuchy.csproj", "{735525AE-C7D7-40FE-BFA0-0BC817C213CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parzystość", "Parzystość\Parzystość.csproj", "{D85A4FE7-4A6F-4E4E-A0EE-F87C93A5F872}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{735525AE-C7D7-40FE-BFA0-0BC817C213CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{735525AE-C7D7-40FE-BFA0-0BC817C213CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{735525AE-C7D7-40FE-BFA0-0BC817C213CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D85A4FE7-4A6F-4E4E-A0EE-F87C93A5F872}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D85A4FE7-4A6F-4E4E-A0EE-F87C93A5F872}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D85A4FE7-4A6F-4E4E-A0EE-F87C93A5F872}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D85A4FE7-4A6F-4E4E-A0EE-F87C93A5F872}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
