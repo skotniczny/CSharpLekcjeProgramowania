@@ -12,17 +12,29 @@
             }
             else throw new Exception("Równanie nie posiada rozwiązań");
         }
+
+        static double wczytajLiczbę(string zachęta)
+        {
+            double liczba = 0;
+            bool czyLiczbaPoprawna;
+            do
+            {
+                Console.Write(zachęta);
+                string s = Console.ReadLine();
+                czyLiczbaPoprawna = double.TryParse(s, out liczba);
+                if (!czyLiczbaPoprawna) Console.Error.WriteLine("Niepoprawny łańcuch. Wprowadź liczbę jeszcze raz");
+            }
+            while (!czyLiczbaPoprawna);
+            return liczba;
+        }
         static void Main(string[] args)
         {
             try
             {
                 // pobieranie współczynników
-                Console.Write("a = ");
-                double a = double.Parse(Console.ReadLine());
-                Console.Write("b = ");
-                double b = double.Parse(Console.ReadLine());
-                Console.Write("c = ");
-                double c = double.Parse(Console.ReadLine());
+                double a = wczytajLiczbę("a = ");
+                double b = wczytajLiczbę("b = ");
+                double c = wczytajLiczbę("c = ");
                 Console.WriteLine($"Równanie: {a}x^2 + {b}x + {c} = 0");
                 // wyróżnik
                 double delta = b * b - 4 * a * c;
