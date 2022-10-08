@@ -15,17 +15,23 @@
 
         static double wczytajLiczbę(string zachęta)
         {
-            double liczba = 0;
-            bool czyLiczbaPoprawna;
+            double? liczba = null;
             do
             {
-                Console.Write(zachęta);
-                string s = Console.ReadLine();
-                czyLiczbaPoprawna = double.TryParse(s, out liczba);
-                if (!czyLiczbaPoprawna) Console.Error.WriteLine("Niepoprawny łańcuch. Wprowadź liczbę jeszcze raz");
+                try
+                {
+                    Console.Write(zachęta);
+                    string s = Console.ReadLine();
+                    liczba = double.Parse(s);
+                }
+                catch
+                {
+                    liczba = null;
+                    Console.Error.WriteLine("Niepoprawny łańcuch. Wprowadź liczbę jeszcze raz");
+                }
             }
-            while (!czyLiczbaPoprawna);
-            return liczba;
+            while (!liczba.HasValue);
+            return liczba.Value;
         }
         static void Main(string[] args)
         {
