@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PętlaFor", "PętlaFor\Pęt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiczbaEulera", "LiczbaEulera\LiczbaEulera.csproj", "{700B3472-BC63-4746-B9A2-0BF024907D73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZabawaKostkami", "ZabawaKostkami\ZabawaKostkami.csproj", "{1296F4D0-111C-4188-974E-EE8B071F4F0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZabawaKostkami", "ZabawaKostkami\ZabawaKostkami.csproj", "{1296F4D0-111C-4188-974E-EE8B071F4F0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agregacja", "Agregacja\Agregacja.csproj", "{055E2C84-727D-47A6-9EC9-BAE4DA023F83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{1296F4D0-111C-4188-974E-EE8B071F4F0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1296F4D0-111C-4188-974E-EE8B071F4F0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1296F4D0-111C-4188-974E-EE8B071F4F0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{055E2C84-727D-47A6-9EC9-BAE4DA023F83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{055E2C84-727D-47A6-9EC9-BAE4DA023F83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{055E2C84-727D-47A6-9EC9-BAE4DA023F83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{055E2C84-727D-47A6-9EC9-BAE4DA023F83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
