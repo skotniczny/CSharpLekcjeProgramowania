@@ -42,6 +42,35 @@ double OdchylenieStandardowe(double[] wartości)
     return Math.Sqrt(Wariancja(wartości));
 }
 
+void Ekstrema(double[] wartości, out int indeksMinimum, out int indeksMaksimum)
+{
+    if (wartości == null) throw new ArgumentNullException("Przesłano obiekt pusty");
+    if (wartości.Length == 0) throw new ArgumentException("W tablicy nie ma elementów");
+
+    indeksMinimum = 0;
+    indeksMaksimum = 0;
+    double minimum = wartości[0], maximum = wartości[0];
+    for (int i = 0; i < wartości.Length; ++i)
+    {
+        if (wartości[i] < minimum)
+        {
+            indeksMinimum = i;
+            minimum = wartości[i];
+        }
+        if (wartości[i] > maximum)
+        {
+            indeksMaksimum = i;
+            maximum = wartości[i];
+        }
+    }
+}
+
+double Zakres(double[] wartości)
+{
+    Ekstrema(wartości, out int indeksMinimum, out int indeksMaksimum);
+    return wartości[indeksMaksimum] - wartości[indeksMinimum];
+}
+
 int[] wartości = ZbiórSumOczekZDwóchKostek(100);
 foreach (int wartość in wartości) Console.Write($"{wartość}; ");
 double[] tablica = Array.ConvertAll<int, double>(wartości, i => (double)i);
@@ -50,4 +79,6 @@ Console.WriteLine($"Suma: {Suma(tablica)}");
 Console.WriteLine($"Średnia: {Średnia(tablica)}");
 Console.WriteLine($"Wariancja: {Wariancja(tablica)}");
 Console.WriteLine($"Odchylenie standardowe: {OdchylenieStandardowe(tablica)}");
-
+Ekstrema(tablica, out int indeksMinimum, out int indeksMaksimum);
+Console.WriteLine($"Wartości od {tablica[indeksMinimum]} do {tablica[indeksMaksimum]}");
+Console.WriteLine($"Zakres: {Zakres(tablica)}");
