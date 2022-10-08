@@ -88,8 +88,26 @@ double Skośność(double[] wartości)
     return (Średnia(wartości) - Mediana(wartości)) / OdchylenieStandardowe(wartości);
 }
 
-int[] wartości = ZbiórSumOczekZDwóchKostek(100);
-foreach (int wartość in wartości) Console.Write($"{wartość}; ");
+int[] Histogram(double[] wartości, int liczbaPrzedziałów)
+{
+    double rozmiarPrzedziału = Zakres(wartości) / liczbaPrzedziałów;
+    if (rozmiarPrzedziału == 0) throw new Exception("Niepoprawne dane");
+    int indeksMinimum, indeksMaksimum;
+    Ekstrema(wartości, out indeksMinimum, out indeksMaksimum);
+    double minimum = wartości[indeksMinimum];
+    int[] histogram = new int[liczbaPrzedziałów];
+    foreach (double wartość in wartości)
+    {
+        int i = (int)((wartość - minimum) / rozmiarPrzedziału);
+        //skrajny punkt zakresu wkładamy do ostatniego przedziału
+        if (i == liczbaPrzedziałów) i = liczbaPrzedziałów - 1;
+        histogram[i]++;
+    }
+    return histogram;
+}
+
+int[] wartości = ZbiórSumOczekZDwóchKostek(10000);
+//foreach (int wartość in wartości) Console.Write($"{wartość}; ");
 double[] tablica = Array.ConvertAll<int, double>(wartości, i => (double)i);
 Console.WriteLine($"Liczba elementów: {tablica.Length}");
 Console.WriteLine($"Suma: {Suma(tablica)}");
@@ -101,3 +119,7 @@ Console.WriteLine($"Wartości od {tablica[indeksMinimum]} do {tablica[indeksMaks
 Console.WriteLine($"Zakres: {Zakres(tablica)}");
 Console.WriteLine($"Mediana: {Mediana(tablica)}");
 Console.WriteLine($"Skośność: {Skośność(tablica)}");
+int[] histogram = Histogram(tablica, 11);
+foreach (int liczbaWartości in histogram)
+    Console.Write(liczbaWartości.ToString() + " ");
+Console.WriteLine();
