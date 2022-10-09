@@ -2,13 +2,14 @@
 {
     internal class Program
     {
-        static void rozwiążRównanieKwadratowe(double a, double b, double c, out double x1, out double x2)
+        static (double x1, double x2) rozwiążRównanieKwadratowe(double a, double b, double c)
         {
             double delta = b * b - 4 * a * c;
             if (delta >= 0)
             {
-                x1 = (-b - Math.Sqrt(delta)) / (2 * a);
-                x2 = (-b + Math.Sqrt(delta)) / (2 * a);
+                double x1 = (-b - Math.Sqrt(delta)) / (2 * a);
+                double x2 = (-b + Math.Sqrt(delta)) / (2 * a);
+                return (x1, x2);
             }
             else throw new Exception("Równanie nie posiada rozwiązań");
         }
@@ -39,9 +40,8 @@
                 // wyróżnik
                 double delta = b * b - 4 * a * c;
                 // obliczanie i wyświetlanie wyniku
-                double x1, x2;
-                rozwiążRównanieKwadratowe(a, b, c, out x1, out x2);
-                Console.WriteLine("Rozwiązania x1=" + x1 + ", x2=" + x2);
+                (double x1, double x2) rozwiązania = rozwiążRównanieKwadratowe(a, b, c);
+                Console.WriteLine("Rozwiązania x1=" + rozwiązania.x1 + ", x2=" + rozwiązania.x2);
             }
             catch (Exception exc)
             {
