@@ -47,7 +47,7 @@
         {
             Func<char, bool> isLowerLetter = (char c) => c >= 'a' && c <= 'z';
             Func<char, bool> isUpperLetter = (char c) => c >= 'A' && c <= 'Z';
-            return isLowerLetter(linia[0]) && isUpperLetter(linia[1]) 
+            return isLowerLetter(linia[0]) && isUpperLetter(linia[1])
                 && isUpperLetter(linia[2]) && isLowerLetter(linia[3]);
         }
         static Czwórki parsujProgram(string[] kodProgramu)
@@ -66,6 +66,37 @@
         }
         #endregion
 
+        static (char nowyStanGłowicy, char nowaWartośćLubPolecenie)? znajdźPolecenie(char stanGłowicy, char wartośćNaTaśmie, Czwórki program)
+        {
+            (char stanGłowicy, char wartośćNaTaśmie) bieżącyStan = (stanGłowicy, wartośćNaTaśmie);
+            if (program.ContainsKey(bieżącyStan)) return program[bieżącyStan];
+            return null;
+        }
+        static List<string> wykonajProgram(
+        (char[] taśma, char stanGłowicy, int położenieGłowicy) stanMaszyny, Czwórki program)
+        {
+            List<string> historia = new List<string>();
+            (char nowyStanGłowicy, char nowaWartośćLubPolecenie)? polecenie;
+            while ((polecenie = znajdźPolecenie(stanMaszyny.stanGłowicy, stanMaszyny.taśma[stanMaszyny.położenieGłowicy], program)) != null)
+            {
+                stanMaszyny.stanGłowicy = polecenie.Value.nowyStanGłowicy;
+                switch (polecenie.Value.nowaWartośćLubPolecenie)
+                {
+                    case 'L':
+                        stanMaszyny.położenieGłowicy--;
+                        break;
+                    case 'R':
+                        stanMaszyny.położenieGłowicy++;
+                        break;
+                    default:
+                        stanMaszyny.taśma[stanMaszyny.położenieGłowicy] = polecenie.Value.nowaWartośćLubPolecenie;
+                        break;
+                }
+                historia.Add(pobierzŁańcuchOpisującyStanMaszyny(stanMaszyny));
+            }
+            return historia;
+        }
+
         static void Main(string[] args)
         {
             string[] kodProgramu = File.ReadAllLines("program.txt");
@@ -73,6 +104,34 @@
             Console.WriteLine($"Początkowy stan maszyny: {łańcuchOpisującyStanMaszyny}");
             Console.WriteLine($"Program:");
             foreach (string linia in kodProgramu) Console.WriteLine(linia);
+
+            try
+            {
+                //analiza taśmy
+                var stanMaszyny = analizujOpisStanuMaszyny(łańcuchOpisującyStanMaszyny);
+                Console.WriteLine($"Stan głowicy: {stanMaszyny.stanGłowicy}");
+                Console.WriteLine($"Położenie głowicy: {stanMaszyny.położenieGłowicy}");
+                Console.WriteLine($"Taśma: {new string(stanMaszyny.taśma)}");
+
+                //parsowanie programu
+                Czwórki program = parsujProgram(kodProgramu);
+
+                Console.WriteLine("\nUruchomienie programu...");
+                List<string> historia = wykonajProgram(stanMaszyny, program);
+
+                Console.WriteLine("\nEwolucja stanu maszyny:");
+                foreach (string linia in historia)
+                {
+                    Console.WriteLine(linia);
+                }
+            }
+            catch (Exception exc)
+            {
+                ConsoleColor color = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Error.WriteLine($"Błąd: {exc.Message}");
+                Console.ForegroundColor = color;
+            }
         }
     }
 }
