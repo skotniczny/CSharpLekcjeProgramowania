@@ -27,7 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZabawaKostkami", "ZabawaKos
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agregacja", "Agregacja\Agregacja.csproj", "{055E2C84-727D-47A6-9EC9-BAE4DA023F83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Debugowanie", "Debugowanie\Debugowanie.csproj", "{4CBFD7B7-FE8C-4841-AD54-A55A585C4741}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Debugowanie", "Debugowanie\Debugowanie.csproj", "{4CBFD7B7-FE8C-4841-AD54-A55A585C4741}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lista", "Lista\Lista.csproj", "{8D43A926-0B14-454F-B3F2-8C2DA0AC9EC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{4CBFD7B7-FE8C-4841-AD54-A55A585C4741}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CBFD7B7-FE8C-4841-AD54-A55A585C4741}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CBFD7B7-FE8C-4841-AD54-A55A585C4741}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D43A926-0B14-454F-B3F2-8C2DA0AC9EC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D43A926-0B14-454F-B3F2-8C2DA0AC9EC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D43A926-0B14-454F-B3F2-8C2DA0AC9EC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D43A926-0B14-454F-B3F2-8C2DA0AC9EC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
