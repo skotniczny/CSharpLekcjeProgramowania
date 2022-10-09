@@ -1,5 +1,6 @@
 ﻿namespace MaszynaTuringa
 {
+    using Czwórki = SortedList<(char stanGłowicy, char wartośćNaTaśmie), (char nowyStanGłowicy, char nowaWartośćNaTaśmie)>;
     internal class Program
     {
         #region Łańcuch opisujący stan maszyny
@@ -38,6 +39,30 @@
             string s = new string(stanMaszyny.taśma);
             s = s.Insert(stanMaszyny.położenieGłowicy, stanMaszyny.stanGłowicy.ToString());
             return s;
+        }
+        #endregion
+
+        #region Parsowanie kodu programu
+        static bool czyCzwórkaPoprawna(string linia)
+        {
+            Func<char, bool> isLowerLetter = (char c) => c >= 'a' && c <= 'z';
+            Func<char, bool> isUpperLetter = (char c) => c >= 'A' && c <= 'Z';
+            return isLowerLetter(linia[0]) && isUpperLetter(linia[1]) 
+                && isUpperLetter(linia[2]) && isLowerLetter(linia[3]);
+        }
+        static Czwórki parsujProgram(string[] kodProgramu)
+        {
+            Czwórki czwórki = new Czwórki();
+            foreach (string linia in kodProgramu)
+            {
+                if (string.IsNullOrWhiteSpace(linia)) continue;
+                if (!czyCzwórkaPoprawna(linia)) throw new Exception($"Niepoprawna linia kodu ({linia})");
+                (char, char) bieżącyStan = (linia[0], linia[1]);
+                (char, char) nowyStan = (linia[3], linia[2]);
+                if (czwórki.ContainsKey(bieżącyStan)) throw new Exception("Program nie może zawierać dwóch poleceń o takim stanie głowicy i wartości na taśmie");
+                czwórki.Add(bieżącyStan, nowyStan);
+            }
+            return czwórki;
         }
         #endregion
 
