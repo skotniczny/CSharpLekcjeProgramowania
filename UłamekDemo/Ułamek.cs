@@ -179,5 +179,30 @@ namespace UłamekDemo
             return new Ułamek(n);
         }
         #endregion
+
+        public static Ułamek Odwróć(Ułamek u)
+        {
+            return new Ułamek(u.Mianownik, u.Licznik);
+        }
+
+        public void Odwróć()
+        {
+            int tmp = Licznik;
+            Licznik = Mianownik;
+            Mianownik = tmp;
+        }
+
+        public readonly Ułamek Odwrócony()
+        {
+            return Ułamek.Odwróć(this);
+        }
+
+        public Ułamek Odwrotność
+        {
+            get
+            {
+                return Odwrócony();
+            }
+        }
     }
 }

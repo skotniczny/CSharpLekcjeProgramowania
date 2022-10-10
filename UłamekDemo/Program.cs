@@ -37,6 +37,16 @@
             Console.WriteLine(r.ToString());
             Ułamek c = 2;
             Console.WriteLine(c.ToString());
+
+            Console.WriteLine("Odwrotność:");
+            Console.WriteLine(Ułamek.Odwróć(Ułamek.Ćwierć));
+
+            Ułamek u14 = Ułamek.Ćwierć;
+            u14.Odwróć();
+            Console.WriteLine(u14);
+
+            Console.WriteLine(Ułamek.Ćwierć.Odwrócony());
+            Console.WriteLine(Ułamek.Ćwierć.Odwrotność);
         }
     }
 }
