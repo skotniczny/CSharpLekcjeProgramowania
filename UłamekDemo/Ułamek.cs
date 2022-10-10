@@ -29,5 +29,15 @@ namespace UłamekDemo
         {
             return "Struktura Ułamek, (c) Jacek Matulewki 2020";
         }
+        public override readonly string ToString()
+        {
+            return licznik.ToString() + "/" + mianownik.ToString();
+        }
+
+        public readonly double ToDouble()
+        {
+            return licznik / (double)mianownik;
+        }
+
     }
 }
