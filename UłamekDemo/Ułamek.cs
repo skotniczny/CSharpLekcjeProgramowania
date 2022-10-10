@@ -8,14 +8,9 @@ namespace UłamekDemo
 {
     public struct Ułamek
     {
-        private int licznik, mianownik;
-
+        private int mianownik;
         #region Własności
-        public int Licznik
-        {
-            get => licznik;
-            set => licznik = value;
-        }
+        public int Licznik { get; set; }
 
         public int Mianownik
         {
@@ -31,14 +26,10 @@ namespace UłamekDemo
         }
         #endregion
 
-        public Ułamek(int licznik, int mianiownik = 1)
+        public Ułamek(int licznik, int mianiownik = 1) : this()
         {
-            if (mianiownik == 0)
-            {
-                throw new ArgumentException("Mianiwnik musi być różny od zera");
-            }
-            this.licznik = licznik;
-            this.mianownik = mianiownik;
+            Licznik = licznik;
+            Mianownik = mianiownik;
         }
 
         public static readonly Ułamek Zero = new Ułamek(0);
@@ -52,17 +43,17 @@ namespace UłamekDemo
         }
         public override readonly string ToString()
         {
-            return licznik.ToString() + "/" + mianownik.ToString();
+            return Licznik.ToString() + "/" + mianownik.ToString();
         }
 
         public readonly double ToDouble()
         {
-            return licznik / (double)mianownik;
+            return Licznik / (double)mianownik;
         }
 
         public void Uprość()
         {
-            int a = licznik;
+            int a = Licznik;
             int b = mianownik;
 
             //NWD
@@ -74,18 +65,18 @@ namespace UłamekDemo
                 b = c;
             }
 
-            licznik /= a;
+            Licznik /= a;
             mianownik /= a;
 
             //znaki
-            if (licznik * mianownik < 0)
+            if (Licznik * mianownik < 0)
             {
-                licznik = -Math.Abs(licznik);
-                mianownik = Math.Abs(mianownik);
+                Licznik = -Math.Abs(Licznik);
+                mianownik = Math.Abs(Mianownik);
             }
             else
             {
-                licznik = Math.Abs(licznik);
+                Licznik = Math.Abs(Licznik);
                 mianownik = Math.Abs(mianownik);
             }
         }
