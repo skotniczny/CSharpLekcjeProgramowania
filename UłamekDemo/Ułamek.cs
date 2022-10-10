@@ -80,5 +80,48 @@ namespace UłamekDemo
                 mianownik = Math.Abs(mianownik);
             }
         }
+
+        #region Operatory arytmetyczne
+        public static Ułamek operator -(Ułamek u)
+        {
+            return new Ułamek(-u.Licznik, u.Mianownik);
+        }
+
+        public static Ułamek operator +(Ułamek u)
+        {
+            return u;
+        }
+
+        public static Ułamek operator +(Ułamek u1, Ułamek u2)
+        {
+            Ułamek wynik = new Ułamek(u1.Licznik * u2.Mianownik + u2.Licznik * u1.Mianownik,
+            u1.Mianownik * u2.Mianownik);
+            wynik.Uprość();
+            return wynik;
+        }
+
+        public static Ułamek operator -(Ułamek u1, Ułamek u2)
+        {
+            Ułamek wynik = new Ułamek(
+                u1.Licznik * u2.Mianownik - u2.Licznik * u1.Mianownik,
+                u1.Mianownik * u2.Mianownik);
+            wynik.Uprość();
+            return wynik;
+        }
+
+        public static Ułamek operator *(Ułamek u1, Ułamek u2)
+        {
+            Ułamek wynik = new Ułamek(u1.Licznik * u2.Licznik, u1.Mianownik * u2.Mianownik);
+            wynik.Uprość();
+            return wynik;
+        }
+
+        public static Ułamek operator /(Ułamek u1, Ułamek u2)
+        {
+            Ułamek wynik = new Ułamek(u1.Licznik * u2.Mianownik, u1.Mianownik * u2.Licznik);
+            wynik.Uprość();
+            return wynik;
+        }
+        #endregion
     }
 }

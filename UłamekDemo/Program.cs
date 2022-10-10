@@ -22,6 +22,15 @@
 
             Ułamek u12 = new Ułamek { Licznik = 1, Mianownik = 2 };
             Console.WriteLine(u12.ToString());
+
+            Ułamek a = Ułamek.Połowa;
+            Ułamek b = Ułamek.Ćwierć;
+
+            Console.WriteLine("Operatory arytmetyczne:");
+            Console.WriteLine((a + b).ToString());
+            Console.WriteLine((a - b).ToString());
+            Console.WriteLine((a * b).ToString());
+            Console.WriteLine((a / b).ToString());
         }
     }
 }
