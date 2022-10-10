@@ -1,4 +1,6 @@
-﻿namespace UłamekDemo
+﻿using Helion;
+
+namespace UłamekDemo
 {
     internal class Program
     {
