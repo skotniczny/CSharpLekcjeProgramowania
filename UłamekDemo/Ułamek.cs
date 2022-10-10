@@ -204,5 +204,20 @@ namespace UłamekDemo
                 return Odwrócony();
             }
         }
+
+        public static Ułamek operator ^(Ułamek u, int n)
+        {
+            if (n == 0) return Ułamek.Jeden;
+            if (u.Licznik == 0 && n < 0)
+            {
+                throw new ArgumentException("Nie można podnosić zere do ujemnej potęgi");
+            }
+            int _n = Math.Abs(n);
+            Ułamek wartość = u;
+            for (int i = 1; i < _n; ++i) wartość *= u;
+            if (n < 0) wartość = Odwróć(wartość);
+            wartość.Uprość();
+            return wartość;
+        }
     }
 }

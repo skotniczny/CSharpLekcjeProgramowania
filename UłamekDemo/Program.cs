@@ -47,6 +47,10 @@
 
             Console.WriteLine(Ułamek.Ćwierć.Odwrócony());
             Console.WriteLine(Ułamek.Ćwierć.Odwrotność);
+
+            Console.WriteLine("Operator potęgowania");
+            Console.WriteLine(Ułamek.Połowa^3);
+            Console.WriteLine(-Ułamek.Połowa ^3);
         }
     }
 }
