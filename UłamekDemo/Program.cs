@@ -15,6 +15,10 @@
             Console.WriteLine(u2.ToString());
             Console.WriteLine(u0.ToString());
             Console.WriteLine(uP.ToString());
+
+            Ułamek um2 = new Ułamek(4, -2);
+            um2.Uprość();
+            Console.WriteLine(um2.ToString());
         }
     }
 }

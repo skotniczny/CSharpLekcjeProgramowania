@@ -39,5 +39,34 @@ namespace UłamekDemo
             return licznik / (double)mianownik;
         }
 
+        public void Uprość()
+        {
+            int a = licznik;
+            int b = mianownik;
+
+            //NWD
+            int c;
+            while (b != 0)
+            {
+                c = a % b;
+                a = b;
+                b = c;
+            }
+
+            licznik /= a;
+            mianownik /= a;
+
+            //znaki
+            if (licznik * mianownik < 0)
+            {
+                licznik = -Math.Abs(licznik);
+                mianownik = Math.Abs(mianownik);
+            }
+            else
+            {
+                licznik = Math.Abs(licznik);
+                mianownik = Math.Abs(mianownik);
+            }
+        }
     }
 }
