@@ -10,6 +10,27 @@ namespace UłamekDemo
     {
         private int licznik, mianownik;
 
+        #region Własności
+        public int Licznik
+        {
+            get => licznik;
+            set => licznik = value;
+        }
+
+        public int Mianownik
+        {
+            get => mianownik;
+            set //zmiana
+            {
+                if (value == 0)
+                {
+                    throw new ArgumentException("Mianownik musi być różny od zera");
+                }
+                mianownik = value;
+            }
+        }
+        #endregion
+
         public Ułamek(int licznik, int mianiownik = 1)
         {
             if (mianiownik == 0)

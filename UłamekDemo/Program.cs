@@ -19,6 +19,9 @@
             Ułamek um2 = new Ułamek(4, -2);
             um2.Uprość();
             Console.WriteLine(um2.ToString());
+
+            Ułamek u12 = new Ułamek { Licznik = 1, Mianownik = 2 };
+            Console.WriteLine(u12.ToString());
         }
     }
 }
