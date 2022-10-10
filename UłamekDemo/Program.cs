@@ -31,6 +31,12 @@
             Console.WriteLine((a - b).ToString());
             Console.WriteLine((a * b).ToString());
             Console.WriteLine((a / b).ToString());
+
+            Console.WriteLine("Operatory konwersji:");
+            double r = (double)Ułamek.Połowa;
+            Console.WriteLine(r.ToString());
+            Ułamek c = 2;
+            Console.WriteLine(c.ToString());
         }
     }
 }

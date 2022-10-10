@@ -167,5 +167,17 @@ namespace UłamekDemo
             return (u1.ToDouble() <= u2.ToDouble());
         }
         #endregion
+
+        #region Operatory konwersji
+        public static explicit operator double(Ułamek u)
+        {
+            return u.ToDouble();
+        }
+
+        public static implicit operator Ułamek(int n)
+        {
+            return new Ułamek(n);
+        }
+        #endregion
     }
 }
