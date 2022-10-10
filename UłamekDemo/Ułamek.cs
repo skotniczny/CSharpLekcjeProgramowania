@@ -123,5 +123,49 @@ namespace UłamekDemo
             return wynik;
         }
         #endregion
+
+        #region Operatory porównania
+        public static bool operator ==(Ułamek u1, Ułamek u2)
+        {
+            return (u1.ToDouble() == u2.ToDouble());
+        }
+
+        public static bool operator !=(Ułamek u1, Ułamek u2)
+        {
+            return !(u1 == u2);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Ułamek)) return false;
+            Ułamek u = (Ułamek)obj;
+            return (this == u);
+        }
+
+        public override int GetHashCode()
+        {
+            return Licznik ^ Mianownik;
+        }
+
+        public static bool operator >(Ułamek u1, Ułamek u2)
+        {
+            return (u1.ToDouble() > u2.ToDouble());
+        }
+
+        public static bool operator >=(Ułamek u1, Ułamek u2)
+        {
+            return (u1.ToDouble() >= u2.ToDouble());
+        }
+
+        public static bool operator <(Ułamek u1, Ułamek u2)
+        {
+            return (u1.ToDouble() < u2.ToDouble());
+        }
+
+        public static bool operator <=(Ułamek u1, Ułamek u2)
+        {
+            return (u1.ToDouble() <= u2.ToDouble());
+        }
+        #endregion
     }
 }
