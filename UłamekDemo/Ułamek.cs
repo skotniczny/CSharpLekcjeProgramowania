@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UłamekDemo
 {
-    public struct Ułamek
+    public struct Ułamek : IComparable<Ułamek>
     {
         private int mianownik;
         #region Własności
@@ -218,6 +218,12 @@ namespace UłamekDemo
             if (n < 0) wartość = Odwróć(wartość);
             wartość.Uprość();
             return wartość;
+        }
+
+        public int CompareTo(Ułamek u)
+        {
+            double różnica = this.ToDouble() - u.ToDouble();
+            return Math.Sign(różnica);
         }
     }
 }

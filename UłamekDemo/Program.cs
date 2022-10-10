@@ -51,6 +51,36 @@
             Console.WriteLine("Operator potęgowania");
             Console.WriteLine(Ułamek.Połowa^3);
             Console.WriteLine(-Ułamek.Połowa ^3);
+
+            Ułamek[] tablica = new Ułamek[10];
+            for (int i = 0; i < tablica.Length; i++)
+            {
+                tablica[i] = new Ułamek(1, i + 1);
+            }
+
+            Console.WriteLine("Przed sortowaniem:");
+            foreach (Ułamek u in tablica)
+            {
+                Console.WriteLine($"{u.ToString()} = {u.ToDouble().ToString()}");
+            }
+
+            try
+            {
+                Array.Sort(tablica);
+            }
+            catch (Exception exc)
+            {
+                ConsoleColor bieżącyKolor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(exc.Message);
+                Console.ForegroundColor = bieżącyKolor;
+            }
+
+            Console.WriteLine("Po sortowaniu");
+            foreach (Ułamek u in tablica)
+            {
+                Console.WriteLine($"{u.ToString()} = {u.ToDouble().ToString()}");
+            }
         }
     }
 }
