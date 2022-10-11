@@ -22,5 +22,12 @@ namespace UłamekTestyJednostkowe
             Assert.AreEqual(licznik, u_licznik, "Niezgodność w liczniku");
             Assert.AreEqual(mianownik, u_mianownik, "Niezgodność w mianowniku");
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestKonstruktoraWyjątek()
+        {
+            Ułamek u = new Ułamek(1, 0);
+        }
     }
 }
