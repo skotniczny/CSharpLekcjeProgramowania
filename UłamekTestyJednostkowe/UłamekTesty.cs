@@ -101,5 +101,36 @@ namespace UłamekTestyJednostkowe
             }
             Assert.IsTrue(tablicaJestPosortowanaRosnąco);
         }
+
+        const int liczbaPowtórzeń = 100;
+
+        [TestMethod]
+        public void TestKonwersjiDoDouble()
+        {
+            for (int i = 0; i < liczbaPowtórzeń; ++i)
+            {
+                int licznik = losujLiczbęCałkowitą();
+                int mianownik = losujLiczbęCałkowitąRóżnąOdZera();
+                Ułamek u = new Ułamek(licznik, mianownik);
+
+                double d = (double)u;
+
+                Assert.AreEqual(licznik / (double)mianownik, d);
+            }
+        }
+
+        [TestMethod]
+        public void TestKonwersjiZInt()
+        {
+            for (int i = 0; i < liczbaPowtórzeń; ++i)
+            {
+                int licznik = losujLiczbęCałkowitą();
+
+                Ułamek u = licznik;
+
+                Assert.AreEqual(licznik, u.Licznik);
+                Assert.AreEqual(1, u.Mianownik);
+            }
+        }
     }
 }
