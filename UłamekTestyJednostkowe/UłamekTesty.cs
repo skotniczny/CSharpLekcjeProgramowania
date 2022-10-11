@@ -73,6 +73,31 @@ namespace UłamekTestyJednostkowe
             Assert.AreEqual(new Ułamek(2), a / b, "Niepowodzenie przy dzieleniu");
         }
 
+        [TestMethod]
+        public void TestOperatorów_Losowy()
+        {
+            //ograniczenie maksymalnej wartości
+            int limit = (int)(Math.Sqrt(int.MaxValue / 2) - 1);
+            //dopuszczalna różnica w wyniku
+            const double dokładność = 1E-10;
+
+            for (int i = 0; i < liczbaPowtórzeń; ++i)
+            {
+                Ułamek a = new Ułamek(losujLiczbęCałkowitą(limit), losujLiczbęCałkowitąRóżnąOdZera(limit));
+                Ułamek b = new Ułamek(losujLiczbęCałkowitą(limit), losujLiczbęCałkowitąRóżnąOdZera(limit));
+
+                double suma = (a + b).ToDouble();
+                double różnica = (a - b).ToDouble();
+                double iloczyn = (a * b).ToDouble();
+                double iloraz = (a / b).ToDouble();
+
+                Assert.AreEqual(a.ToDouble() + b.ToDouble(), suma, dokładność, "Niepowodzenie przy dodawaniu");
+                Assert.AreEqual(a.ToDouble() - b.ToDouble(), różnica, dokładność, "Niepowodzenie przy odejmowaniu");
+                Assert.AreEqual(a.ToDouble() * b.ToDouble(), iloczyn, dokładność, "Niepowodzenie przy mnożeniu");
+                Assert.AreEqual(a.ToDouble() / b.ToDouble(), iloraz, dokładność, "Niepowodzenie przy dzieleniu");
+            }
+        }
+
         Random r = new Random();
         private int losujLiczbęCałkowitą(int? maksymalnaBezwzględnaWartość = null)
         {
