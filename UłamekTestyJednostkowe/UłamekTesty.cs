@@ -16,8 +16,11 @@ namespace UłamekTestyJednostkowe
             Ułamek u = new Ułamek(licznik, mianownik);
 
             //werfikacja (assert)
-            Assert.AreEqual(licznik, u.Licznik, "Niezgodność w liczniku");
-            Assert.AreEqual(mianownik, u.Mianownik, "Niezgodność w mianowniku");
+            PrivateObject po = new PrivateObject(u);
+            int u_licznik = u.Licznik;
+            int u_mianownik = (int)po.GetField("mianownik");
+            Assert.AreEqual(licznik, u_licznik, "Niezgodność w liczniku");
+            Assert.AreEqual(mianownik, u_mianownik, "Niezgodność w mianowniku");
         }
     }
 }
