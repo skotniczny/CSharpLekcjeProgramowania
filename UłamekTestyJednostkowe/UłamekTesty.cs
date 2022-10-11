@@ -1,3 +1,5 @@
+using Helion;
+
 namespace UłamekTestyJednostkowe
 {
     [TestClass]
