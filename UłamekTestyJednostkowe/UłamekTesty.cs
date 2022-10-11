@@ -47,6 +47,21 @@ namespace UłamekTestyJednostkowe
         }
 
         [TestMethod]
+        public void TestMetodyUprość_Losowy()
+        {
+            for (int i = 0; i < liczbaPowtórzeń; ++i)
+            {
+                Ułamek u = new Ułamek(losujLiczbęCałkowitą(), losujLiczbęCałkowitąRóżnąOdZera());
+                Ułamek kopia = u; //klonowanie
+
+                u.Uprość();
+
+                Assert.IsTrue(u.Mianownik > 0);
+                Assert.AreEqual(kopia.ToDouble(), u.ToDouble());
+            }
+        }
+
+        [TestMethod]
         public void TestOperatorów()
         {
             Ułamek a = Ułamek.Połowa;

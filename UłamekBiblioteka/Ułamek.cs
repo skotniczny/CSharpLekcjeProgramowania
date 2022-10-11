@@ -63,7 +63,7 @@
             mianownik /= a;
 
             //znaki
-            if (Licznik * mianownik < 0)
+            if (Math.Sign(Licznik) * Math.Sign(mianownik) < 0)
             {
                 Licznik = -Math.Abs(Licznik);
                 mianownik = Math.Abs(Mianownik);
