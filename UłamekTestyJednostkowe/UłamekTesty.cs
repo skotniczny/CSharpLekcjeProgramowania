@@ -57,5 +57,49 @@ namespace UłamekTestyJednostkowe
             Assert.AreEqual(new Ułamek(1, 8), a * b, "Niepowodzenie przy mnożeniu");
             Assert.AreEqual(new Ułamek(2), a / b, "Niepowodzenie przy dzieleniu");
         }
+
+        Random r = new Random();
+        private int losujLiczbęCałkowitą(int? maksymalnaBezwzględnaWartość = null)
+        {
+            if (!maksymalnaBezwzględnaWartość.HasValue)
+            {
+                return r.Next(int.MinValue, int.MaxValue);
+            }
+            else
+            {
+                maksymalnaBezwzględnaWartość = Math.Abs(maksymalnaBezwzględnaWartość.Value);
+                return r.Next(-maksymalnaBezwzględnaWartość.Value, maksymalnaBezwzględnaWartość.Value);
+            }
+        }
+
+        private int losujLiczbęCałkowitąRóżnąOdZera(int? maksymalnaBezwzględnaWartość = null)
+        {
+            int wartosc;
+            do
+            {
+                wartosc = losujLiczbęCałkowitą(maksymalnaBezwzględnaWartość);
+            }
+            while (wartosc == 0);
+            return wartosc;
+        }
+
+        [TestMethod]
+        public void TestSortowania()
+        {
+            Ułamek[] tablica = new Ułamek[100];
+            for (int i = 0; i < tablica.Length; i++)
+            {
+                tablica[i] = new Ułamek(losujLiczbęCałkowitą(), losujLiczbęCałkowitąRóżnąOdZera());
+            }
+
+            Array.Sort(tablica);
+
+            bool tablicaJestPosortowanaRosnąco = true;
+            for (int i = 0; i < tablica.Length - 1; i++)
+            {
+                if (tablica[i] > tablica[i + 1]) tablicaJestPosortowanaRosnąco = false;
+            }
+            Assert.IsTrue(tablicaJestPosortowanaRosnąco);
+        }
     }
 }
