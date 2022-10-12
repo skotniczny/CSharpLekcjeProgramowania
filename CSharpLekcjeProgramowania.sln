@@ -19,9 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZamianaParametrów", "Zamia
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pochodna", "Pochodna\Pochodna.csproj", "{BF76FC17-F9C8-4811-B728-EB393EABA7E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PętlaFor", "PętlaFor\PętlaFor.csproj", "{16727A96-12F6-4884-A056-AAD8C3B99113}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PętlaFor", "PętlaFor\PętlaFor.csproj", "{16727A96-12F6-4884-A056-AAD8C3B99113}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiczbaEulera", "LiczbaEulera\LiczbaEulera.csproj", "{700B3472-BC63-4746-B9A2-0BF024907D73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiczbaEulera", "LiczbaEulera\LiczbaEulera.csproj", "{700B3472-BC63-4746-B9A2-0BF024907D73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z0508", "Z0508\Z0508.csproj", "{C71F08D3-9934-464F-9893-C5AAA767FDA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{700B3472-BC63-4746-B9A2-0BF024907D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{700B3472-BC63-4746-B9A2-0BF024907D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{700B3472-BC63-4746-B9A2-0BF024907D73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C71F08D3-9934-464F-9893-C5AAA767FDA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C71F08D3-9934-464F-9893-C5AAA767FDA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C71F08D3-9934-464F-9893-C5AAA767FDA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C71F08D3-9934-464F-9893-C5AAA767FDA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
