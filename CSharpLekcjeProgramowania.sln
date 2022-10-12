@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiczbaEulera", "LiczbaEuler
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z0505", "Z0505\Z0505.csproj", "{9AA746BD-2623-4486-9707-6919D8A6CA1F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z0506", "Z0506\Z0506.csproj", "{589B14C5-1EA9-44D0-BF02-00DB863E309D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{9AA746BD-2623-4486-9707-6919D8A6CA1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AA746BD-2623-4486-9707-6919D8A6CA1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AA746BD-2623-4486-9707-6919D8A6CA1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{589B14C5-1EA9-44D0-BF02-00DB863E309D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{589B14C5-1EA9-44D0-BF02-00DB863E309D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{589B14C5-1EA9-44D0-BF02-00DB863E309D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{589B14C5-1EA9-44D0-BF02-00DB863E309D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
