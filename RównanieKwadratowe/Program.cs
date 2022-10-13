@@ -7,6 +7,14 @@
         public double? X1 { get; private set; }
         public double? X2 { get; private set; }
 
+        public void UstawWspółczynniki(double a, double b, double c)
+        {
+            this.a = a;
+            this.b = b;
+            this.c = c;
+            rozwiąż();
+        }
+
         public bool MaRozwiązania
         {
             get => X1.HasValue && X2.HasValue;
@@ -30,15 +38,12 @@
 
         public RównanieKwadratowe(double a, double b, double c)
         {
-            this.a = a;
-            this.b = b;
-            this.c = c;
-            rozwiąż();
+            UstawWspółczynniki(a, b, c);
         }
 
-        public double A { get => a; }
-        public double B { get => b; }
-        public double C { get => c; }
+        public double A { get => a; set { a = value; rozwiąż(); } }
+        public double B { get => b; set { b = value; rozwiąż(); } }
+        public double C { get => c; set { c = value; rozwiąż(); } }
     }
 
     internal class Program
@@ -57,30 +62,37 @@
             while (!czyLiczbaPoprawna);
             return liczba;
         }
-        static void Main(string[] args)
-        {
-            try
-            {
-                // pobieranie współczynników
-                double a = wczytajLiczbę("a = ");
-                double b = wczytajLiczbę("b = ");
-                double c = wczytajLiczbę("c = ");
-                Console.WriteLine($"Równanie: {a}x^2 + {b}x + {c} = 0");
 
-                // obliczanie i wyświetlanie wyniku
-                RównanieKwadratowe równanie = new RównanieKwadratowe(a, b, c);
-                if (równanie.MaRozwiązania)
+        private static long testWydajności(long liczbaPowtórzeń, long liczbaZmianWspółczynników, long liczbaOdczytówRozwiązań)
+        {
+            long N = liczbaPowtórzeń;
+            long n1 = N / liczbaZmianWspółczynników;
+            long n2 = N / liczbaOdczytówRozwiązań;
+            RównanieKwadratowe równanie = new RównanieKwadratowe(1, 2, 1);
+            long start = Environment.TickCount64;
+            for (long i = 0; i < N; ++i)
+            {
+                if (i % n1 == 0)
                 {
-                    Console.WriteLine("Rozwiązania x1=" + równanie.X1 + ", x2=" + równanie.X2);
-                } else
+                    równanie.A = 1;
+                    równanie.B = 2;
+                    równanie.C = 1;
+                }
+                if (i % n2 == 0)
                 {
-                    Console.WriteLine("Równanie nie posiada rozwiązań");
+                    double x1 = równanie.X1.Value;
+                    double x2 = równanie.X2.Value;
                 }
             }
-            catch (Exception exc)
-            {
-                Console.Error.WriteLine(exc.Message);
-            }
+            long end = Environment.TickCount64;
+            return end - start;
+        }
+
+        static void Main(string[] args)
+        {
+            long N = 100000000;
+            Console.WriteLine($"Przeważa odczyt rozwiązań: {testWydajności(N, N / 100, N)}");
+            Console.WriteLine($"Przeważa zmiana współczynników: {testWydajności(N, N, N / 100)}");
         }
     }
 }
