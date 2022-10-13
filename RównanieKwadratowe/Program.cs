@@ -5,9 +5,43 @@
         private double a, b, c;
         private double? x1, x2;
 
-        public double A { get => a; set => a = value; }
-        public double B { get => b; set => b = value; }
-        public double C { get => c; set => c = value; }
+        bool konieczneObliczenieRozwiązań = true;
+
+        public double A
+        {
+            get => a;
+            set {
+                if (value != a)
+                {
+                    konieczneObliczenieRozwiązań = true;
+                    a = value;
+                }
+            }
+        }
+        public double B
+        {
+            get => b;
+            set
+            {
+                if (value != b)
+                {
+                    konieczneObliczenieRozwiązań = true;
+                    b = value;
+                }
+            }
+        }
+        public double C
+        {
+            get => c;
+            set
+            {
+                if (value != c)
+                {
+                    konieczneObliczenieRozwiązań = true;
+                    c = value;
+                }
+            }
+        }
 
         public double? X1
         {
@@ -33,6 +67,9 @@
 
         private void rozwiąż()
         {
+            if (!konieczneObliczenieRozwiązań) return;
+            konieczneObliczenieRozwiązań = false;
+
             double delta = b * b - 4 * a * c;
 
             if (delta >= 0)
