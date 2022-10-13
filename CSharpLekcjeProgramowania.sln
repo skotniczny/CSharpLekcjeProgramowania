@@ -39,7 +39,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UłamekDemo", "UłamekDemo\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UłamekBiblioteka", "UłamekBiblioteka\UłamekBiblioteka.csproj", "{090A34D0-D2CB-4DC5-8327-50DE48E7357B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UłamekTestyJednostkowe", "UłamekTestyJednostkowe\UłamekTestyJednostkowe.csproj", "{D8867F1B-AEE8-4BEC-96FB-607B1445A679}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UłamekTestyJednostkowe", "UłamekTestyJednostkowe\UłamekTestyJednostkowe.csproj", "{D8867F1B-AEE8-4BEC-96FB-607B1445A679}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaszynaTuringa2", "MaszynaTuringa2\MaszynaTuringa2.csproj", "{B67F3E38-681D-4615-93D3-2551DA85B4E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +125,10 @@ Global
 		{D8867F1B-AEE8-4BEC-96FB-607B1445A679}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8867F1B-AEE8-4BEC-96FB-607B1445A679}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8867F1B-AEE8-4BEC-96FB-607B1445A679}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B67F3E38-681D-4615-93D3-2551DA85B4E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B67F3E38-681D-4615-93D3-2551DA85B4E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B67F3E38-681D-4615-93D3-2551DA85B4E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B67F3E38-681D-4615-93D3-2551DA85B4E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
