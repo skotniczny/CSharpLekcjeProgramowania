@@ -1,19 +1,48 @@
 ﻿namespace RównanieKwadratowe
 {
-    internal class Program
+    class RównanieKwadratowe
     {
-        static (double x1, double x2)? rozwiążRównanieKwadratowe(double a, double b, double c)
+        private double a, b, c;
+
+        public double? X1 { get; private set; }
+        public double? X2 { get; private set; }
+
+        public bool MaRozwiązania
         {
-            double delta = b * b - 4 * a * c;
-            if (delta >= 0)
-            {
-                double x1 = (-b - Math.Sqrt(delta)) / (2 * a);
-                double x2 = (-b + Math.Sqrt(delta)) / (2 * a);
-                return (x1, x2);
-            }
-            return null;
+            get => X1.HasValue && X2.HasValue;
         }
 
+        private void rozwiąż()
+        {
+            double delta = b * b - 4 * a * c;
+
+            if (delta >= 0)
+            {
+                X1 = (-b - Math.Sqrt(delta)) / (2 * a);
+                X2 = (-b + Math.Sqrt(delta)) / (2 * a);
+            }
+            else
+            {
+                X1 = null;
+                X2 = null;
+            }
+        }
+
+        public RównanieKwadratowe(double a, double b, double c)
+        {
+            this.a = a;
+            this.b = b;
+            this.c = c;
+            rozwiąż();
+        }
+
+        public double A { get => a; }
+        public double B { get => b; }
+        public double C { get => c; }
+    }
+
+    internal class Program
+    {
         static double wczytajLiczbę(string zachęta)
         {
             double liczba = 0;
@@ -37,13 +66,12 @@
                 double b = wczytajLiczbę("b = ");
                 double c = wczytajLiczbę("c = ");
                 Console.WriteLine($"Równanie: {a}x^2 + {b}x + {c} = 0");
-                // wyróżnik
-                double delta = b * b - 4 * a * c;
+
                 // obliczanie i wyświetlanie wyniku
-                (double x1, double x2)? rozwiązania = rozwiążRównanieKwadratowe(a, b, c);
-                if (rozwiązania.HasValue)
+                RównanieKwadratowe równanie = new RównanieKwadratowe(a, b, c);
+                if (równanie.MaRozwiązania)
                 {
-                    Console.WriteLine("Rozwiązania x1=" + rozwiązania.Value.x1 + ", x2=" + rozwiązania.Value.x2);
+                    Console.WriteLine("Rozwiązania x1=" + równanie.X1 + ", x2=" + równanie.X2);
                 } else
                 {
                     Console.WriteLine("Równanie nie posiada rozwiązań");
