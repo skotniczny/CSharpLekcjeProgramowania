@@ -45,6 +45,44 @@
         }
     }
 
+    class ProgramMaszynyTuringa
+    {
+        private SortedList<Dwójka, Dwójka> czwórki;
+
+        static SortedList<Dwójka, Dwójka> parsuj(string[] kodProgramu)
+        {
+            SortedList<Dwójka, Dwójka> czwórki = new SortedList<Dwójka, Dwójka>();
+            foreach (string linia in kodProgramu)
+            {
+                try
+                {
+                    Czwórka czwórka = Czwórka.Parsuj(linia);
+                    if (czwórki.ContainsKey(czwórka.BieżącyStan))
+                    {
+                        throw new Exception("Program głowicy nie może zawierać dwóch poleceń o takim stanie głowicy i wartości na taśmie");
+                    }
+                    czwórki.Add(czwórka.BieżącyStan, czwórka.NowyStan);
+                }
+                catch (Exception exc)
+                {
+                    Console.Error.WriteLine(exc.Message);
+                }
+            }
+            return czwórki;
+        }
+
+        public ProgramMaszynyTuringa(string[] kodProgramu)
+        {
+            czwórki = parsuj(kodProgramu);
+        }
+
+        public Dwójka? ZnajdźPolecenie(Dwójka bieżącyStan)
+        {
+            if (czwórki.ContainsKey(bieżącyStan)) return czwórki[bieżącyStan];
+            else return null;
+        }
+    }
+
     class Turing
     {
     }
