@@ -83,6 +83,97 @@
         }
     }
 
+    class StanMaszynyTuringa
+    {
+        public char[] Taśma;
+        public char StanGłowicy;
+        public int PołożenieGłowicy;
+
+        public Dwójka BieżącyStan
+        {
+            get => new Dwójka()
+            {
+                StanGłowicy = this.StanGłowicy,
+                WartośćLubPolecenieNaTaśmie = Taśma[this.PołożenieGłowicy]
+            };
+        }
+
+        public StanMaszynyTuringa(char[] taśma, char stanGłowicy, int położenieGłowicy)
+        {
+            Taśma = taśma;
+            StanGłowicy = stanGłowicy;
+            PołożenieGłowicy = położenieGłowicy;
+        }
+
+        public string ŁańcuchOpisującyStanMaszyny
+        {
+            get
+            {
+                string s = new string(Taśma);
+                s = s.Insert(PołożenieGłowicy, StanGłowicy.ToString());
+                return s;
+            }
+            set
+            {
+                StanMaszynyTuringa stan = StanMaszynyTuringa.analizuj(value);
+                Taśma = stan.Taśma;
+                StanGłowicy = stan.StanGłowicy;
+                PołożenieGłowicy = stan.PołożenieGłowicy;
+            }
+        }
+
+        private static StanMaszynyTuringa analizuj(string łańcuchOpisującyStanMaszyny)
+        {
+            char stanGłowicy = ' ';
+            int położenieGłowicy = -1;
+            for (int i = 0; i < łańcuchOpisującyStanMaszyny.Length; ++i)
+            {
+                char c = łańcuchOpisującyStanMaszyny[i];
+                if (c == 'L' || c == 'R')
+                {
+                    throw new Exception("Taśma nie może zawierać wartości L lub R");
+                }
+                if (char.IsLower(c))
+                {
+                    if (położenieGłowicy != -1)
+                    {
+                        throw new Exception("Znaleziono więcej niż jeden znak oznaczający głowicę");
+                    }
+                    stanGłowicy = c;
+                    położenieGłowicy = i;
+                    łańcuchOpisującyStanMaszyny = łańcuchOpisującyStanMaszyny.Remove(położenieGłowicy, 1);
+                }
+                else
+                {
+                    if (c < 'A' || c > 'Z')
+                    {
+                        throw new Exception($"Niepoprawna wartość na taśmie ({c} na pozycji {i}");
+                    }
+                }
+            }
+            if (położenieGłowicy < 0)
+            {
+                throw new Exception("Nie znaleziono znaku oznaczającego głowicę");
+            }
+            return new StanMaszynyTuringa(łańcuchOpisującyStanMaszyny.ToCharArray(), stanGłowicy, położenieGłowicy);
+        }
+
+        public StanMaszynyTuringa Twórz(string łańcuchOpisującyStanMaszyny)
+        {
+            return analizuj(łańcuchOpisującyStanMaszyny);
+        }
+
+        public StanMaszynyTuringa(string łańcuchOpisującyStanMaszyny)
+        {
+            ŁańcuchOpisującyStanMaszyny = łańcuchOpisującyStanMaszyny;
+        }
+
+        public override string ToString()
+        {
+            return ŁańcuchOpisującyStanMaszyny;
+        }
+    }
+
     class Turing
     {
     }
