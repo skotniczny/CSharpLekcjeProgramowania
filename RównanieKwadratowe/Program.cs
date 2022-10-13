@@ -3,16 +3,27 @@
     class RównanieKwadratowe
     {
         private double a, b, c;
+        private double? x1, x2;
 
-        public double? X1 { get; private set; }
-        public double? X2 { get; private set; }
+        public double A { get => a; set => a = value; }
+        public double B { get => b; set => b = value; }
+        public double C { get => c; set => c = value; }
 
-        public void UstawWspółczynniki(double a, double b, double c)
+        public double? X1
         {
-            this.a = a;
-            this.b = b;
-            this.c = c;
-            rozwiąż();
+            get
+            {
+                rozwiąż();
+                return x1;
+            }
+        }
+        public double? X2
+        {
+            get
+            {
+                rozwiąż();
+                return x2;
+            }
         }
 
         public bool MaRozwiązania
@@ -26,24 +37,22 @@
 
             if (delta >= 0)
             {
-                X1 = (-b - Math.Sqrt(delta)) / (2 * a);
-                X2 = (-b + Math.Sqrt(delta)) / (2 * a);
+                x1 = (-b - Math.Sqrt(delta)) / (2 * a);
+                x2 = (-b + Math.Sqrt(delta)) / (2 * a);
             }
             else
             {
-                X1 = null;
-                X2 = null;
+                x1 = null;
+                x2 = null;
             }
         }
 
         public RównanieKwadratowe(double a, double b, double c)
         {
-            UstawWspółczynniki(a, b, c);
+            A = a;
+            B = b;
+            C = c;
         }
-
-        public double A { get => a; set { a = value; rozwiąż(); } }
-        public double B { get => b; set { b = value; rozwiąż(); } }
-        public double C { get => c; set { c = value; rozwiąż(); } }
     }
 
     internal class Program
