@@ -1,4 +1,4 @@
-﻿namespace MaszynaTuringa2
+﻿namespace Turing
 {
     struct Dwójka : IComparable<Dwójka>
     {
@@ -171,6 +171,43 @@
         public override string ToString()
         {
             return ŁańcuchOpisującyStanMaszyny;
+        }
+    }
+
+    public class MaszynaTuringa
+    {
+        private StanMaszynyTuringa stan; //aktualny stan
+        private ProgramMaszynyTuringa program; //program maszyny Turinga
+
+        public MaszynaTuringa(string łańcuchOpisującyStanMaszyny, string[] kodProgramu)
+        {
+            stan = new StanMaszynyTuringa(łańcuchOpisującyStanMaszyny);
+            program = new ProgramMaszynyTuringa(kodProgramu);
+        }
+
+        public string[] WykonajProgram()
+        {
+            List<string> historia = new List<string>();
+            historia.Add(stan.ŁańcuchOpisującyStanMaszyny);
+            Dwójka? polecenie;
+            while ((polecenie = program.ZnajdźPolecenie(stan.BieżącyStan)) != null)
+            {
+                stan.StanGłowicy = polecenie.Value.StanGłowicy;
+                switch (polecenie.Value.WartośćLubPolecenieNaTaśmie)
+                {
+                    case 'L':
+                        stan.PołożenieGłowicy--;
+                        break;
+                    case 'R':
+                        stan.PołożenieGłowicy++;
+                        break;
+                    default:
+                        stan.Taśma[stan.PołożenieGłowicy] = polecenie.Value.WartośćLubPolecenieNaTaśmie;
+                        break;
+                }
+                historia.Add(stan.ŁańcuchOpisującyStanMaszyny);
+            }
+            return historia.ToArray();
         }
     }
 
