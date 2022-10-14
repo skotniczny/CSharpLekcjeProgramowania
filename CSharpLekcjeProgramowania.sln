@@ -45,6 +45,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaszynaTuringa2", "MaszynaT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Statystyka", "Statystyka\Statystyka.csproj", "{7694BC40-3D8E-48AE-B819-0BE7EC59D096}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatystykaDemo", "StatystykaDemo\StatystykaDemo.csproj", "{F47E7C15-221D-4AAB-A2E1-988B359D7640}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +137,10 @@ Global
 		{7694BC40-3D8E-48AE-B819-0BE7EC59D096}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7694BC40-3D8E-48AE-B819-0BE7EC59D096}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7694BC40-3D8E-48AE-B819-0BE7EC59D096}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F47E7C15-221D-4AAB-A2E1-988B359D7640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F47E7C15-221D-4AAB-A2E1-988B359D7640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F47E7C15-221D-4AAB-A2E1-988B359D7640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F47E7C15-221D-4AAB-A2E1-988B359D7640}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
