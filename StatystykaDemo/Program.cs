@@ -21,21 +21,11 @@
         {
             int[] wartości = ZbiórSumOczekZDwóchKostek(10000);
             double[] tablica = Array.ConvertAll<int, double>(wartości, i => (double)i);
-            Console.WriteLine("Liczba elementów: " + tablica.Length);
-            Console.WriteLine("Suma: " + Suma(tablica));
-            Console.WriteLine("Średnia: " + Średnia(tablica));
-            Console.WriteLine("Wariancja: " + Wariancja(tablica));
-            Console.WriteLine("Odchylenie standardowe: " + OdchylenieStandardowe(tablica));
 
-            double minimum, maksimum;
-            Ekstrema(tablica, out minimum, out maksimum);
-            Console.WriteLine("Wartości od " + minimum + " do " + maksimum);
-            Console.WriteLine("Zakres: " + Zakres(tablica));
-            Console.WriteLine("Mediana: " + Mediana(tablica));
-            Console.WriteLine("Skośność: " + Skośność(tablica));
-            int[] histogram = Histogram(tablica, 11);
-            foreach (int liczbaWartości in histogram)
-                Console.Write(liczbaWartości.ToString() + " ");
+            Statystyka.ParametryStatystyczne parametryStatystyczne = new Statystyka.ParametryStatystyczne(tablica);
+            Console.WriteLine(parametryStatystyczne.ToString());
+
+            Console.WriteLine(Statystyka.ParametryStatystyczne.Opis(tablica));
         }
     }
 }
