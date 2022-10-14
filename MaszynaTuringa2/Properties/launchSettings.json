@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MaszynaTuringa2": {
+      "commandName": "Project",
+      "commandLineArgs": "program.txt taśma.txt"
+    }
+  }
+}
