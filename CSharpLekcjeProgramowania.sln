@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiczbaEulera", "LiczbaEuler
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZabawaKostkami", "ZabawaKostkami\ZabawaKostkami.csproj", "{1296F4D0-111C-4188-974E-EE8B071F4F0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agregacja", "Agregacja\Agregacja.csproj", "{055E2C84-727D-47A6-9EC9-BAE4DA023F83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agregacja", "Agregacja\Agregacja.csproj", "{055E2C84-727D-47A6-9EC9-BAE4DA023F83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z0712", "Z0712\Z0712.csproj", "{6BACE2C1-DF39-4E25-9DA5-D1C13D99E889}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{055E2C84-727D-47A6-9EC9-BAE4DA023F83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{055E2C84-727D-47A6-9EC9-BAE4DA023F83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{055E2C84-727D-47A6-9EC9-BAE4DA023F83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BACE2C1-DF39-4E25-9DA5-D1C13D99E889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BACE2C1-DF39-4E25-9DA5-D1C13D99E889}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BACE2C1-DF39-4E25-9DA5-D1C13D99E889}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BACE2C1-DF39-4E25-9DA5-D1C13D99E889}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
