@@ -29,9 +29,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agregacja", "Agregacja\Agre
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Debugowanie", "Debugowanie\Debugowanie.csproj", "{4CBFD7B7-FE8C-4841-AD54-A55A585C4741}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lista", "Lista\Lista.csproj", "{8D43A926-0B14-454F-B3F2-8C2DA0AC9EC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lista", "Lista\Lista.csproj", "{8D43A926-0B14-454F-B3F2-8C2DA0AC9EC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tłumacz", "Tłumacz\Tłumacz.csproj", "{6EC4F8BF-9E3D-4EBA-99FD-50078864DA65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tłumacz", "Tłumacz\Tłumacz.csproj", "{6EC4F8BF-9E3D-4EBA-99FD-50078864DA65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z0904", "Z0904\Z0904.csproj", "{7B408822-9F35-4C23-90A3-B49B94B936A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{6EC4F8BF-9E3D-4EBA-99FD-50078864DA65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EC4F8BF-9E3D-4EBA-99FD-50078864DA65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EC4F8BF-9E3D-4EBA-99FD-50078864DA65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B408822-9F35-4C23-90A3-B49B94B936A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B408822-9F35-4C23-90A3-B49B94B936A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B408822-9F35-4C23-90A3-B49B94B936A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B408822-9F35-4C23-90A3-B49B94B936A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
