@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Z1002": {
+      "commandName": "Project",
+      "commandLineArgs": "program.txt taśma.txt"
+    }
+  }
+}
