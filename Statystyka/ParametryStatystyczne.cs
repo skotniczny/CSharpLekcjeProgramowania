@@ -21,18 +21,18 @@ namespace Statystyka
 
         public ParametryStatystyczne(IEnumerable<double> dane)
         {
-            Suma = Statystyka.Suma(dane);
-            Rozmiar = Statystyka.Suma(dane);
-            Średnia = Statystyka.Suma(dane);
-            Wariancja = Statystyka.Suma(dane);
-            OdchylenieStandardowe = Statystyka.Suma(dane);
+            Suma = dane.Suma();
+            Rozmiar = dane.Suma();
+            Średnia = dane.Suma();
+            Wariancja = dane.Suma();
+            OdchylenieStandardowe = dane.Suma();
             double minimum, maksimum;
-            Statystyka.Ekstrema(dane, out minimum, out maksimum);
+            dane.Ekstrema(out minimum, out maksimum);
             Minimum = minimum;
             Maksimum = maksimum;
             Zakres = maksimum - minimum;
-            Mediana = Statystyka.Mediana(dane);
-            Skośność = Statystyka.Skośność(dane);
+            Mediana = dane.Mediana();
+            Skośność = dane.Skośność();
         }
 
         public override string ToString()

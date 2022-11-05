@@ -1,22 +1,22 @@
 ﻿namespace Statystyka
 {
-    public class Statystyka
+    public static class Statystyka
     {
-        public static double Suma(IEnumerable<double> wartości)
+        public static double Suma(this IEnumerable<double> wartości)
         {
             double suma = 0;
             foreach (double wartość in wartości) suma += wartość;
             return suma;
         }
 
-        public static int Liczba(IEnumerable<double> wartości)
+        public static int Liczba(this IEnumerable<double> wartości)
         {
             int liczba = 0;
             foreach (double wartość in wartości) liczba++;
             return liczba;
         }
 
-        public static double Średnia(IEnumerable<double> wartości)
+        public static double Średnia(this IEnumerable<double> wartości)
         {
             if (wartości == null) throw new ArgumentNullException("Przesłano obiekt pusty");
             int liczba = Liczba(wartości);
@@ -25,7 +25,7 @@
         }
 
         //tu nie korzystam z meotdy Suma, żeby uniknąć dwóch pętli zamiast jednej
-        public static double Średnia2(IEnumerable<double> wartości)
+        public static double Średnia2(this IEnumerable<double> wartości)
         {
             if (wartości == null) throw new ArgumentNullException("Przesłano obiekt pusty");
             int liczba = 0;
@@ -39,7 +39,7 @@
             return suma / liczba;
         }
 
-        public static double Wariancja(IEnumerable<double> wartości)
+        public static double Wariancja(this IEnumerable<double> wartości)
         {
             double średnia = Średnia(wartości);
             double wariancja = 0;
@@ -51,12 +51,12 @@
             return wariancja / Liczba(wartości);
         }
 
-        public static double OdchylenieStandardowe(IEnumerable<double> wartości)
+        public static double OdchylenieStandardowe(this IEnumerable<double> wartości)
         {
             return Math.Sqrt(Wariancja(wartości));
         }
 
-        public static void Ekstrema(IEnumerable<double> wartości, out double minimum, out double maksimum)
+        public static void Ekstrema(this IEnumerable<double> wartości, out double minimum, out double maksimum)
         {
             if (wartości == null) throw new ArgumentNullException("Przesłano obiekt pusty");
             if (Liczba(wartości) == 0) throw new ArgumentException("W tablicy nie ma elementów");
@@ -80,19 +80,19 @@
             }
         }
 
-        public static double Zakres(IEnumerable<double> wartości)
+        public static double Zakres(this IEnumerable<double> wartości)
         {
             double minimum, maksimum;
             Ekstrema(wartości, out minimum, out maksimum);
             return maksimum - minimum;
         }
 
-        public static double Skośność(IEnumerable<double> wartości)
+        public static double Skośność(this IEnumerable<double> wartości)
         {
             return (Średnia(wartości) - Mediana(wartości)) / OdchylenieStandardowe(wartości);
         }
 
-        public static double[] KopiujDoTablicy(IEnumerable<double> wartości)
+        public static double[] KopiujDoTablicy(this IEnumerable<double> wartości)
         {
             double[] tablica = new double[Liczba(wartości)];
             int i = 0;
@@ -104,7 +104,7 @@
             return tablica;
         }
 
-        public static double Mediana(IEnumerable<double> wartości)
+        public static double Mediana(this IEnumerable<double> wartości)
         {
             if (wartości == null) throw new ArgumentNullException("Przesłano obiekt pusty");
             if (Liczba(wartości) == 0) throw new ArgumentException("W tablicy nie ma elementów");
@@ -116,7 +116,7 @@
             else return (_wartości[_wartości.Length / 2 - 1] + _wartości[_wartości.Length / 2]) / 2.0;
         }
 
-        public static int[] Histogram(IEnumerable<double> wartości, int liczbaPrzedziałów)
+        public static int[] Histogram(this IEnumerable<double> wartości, int liczbaPrzedziałów)
         {
             double rozmiarPrzediału = Zakres(wartości) / liczbaPrzedziałów;
             if (rozmiarPrzediału == 0) throw new Exception("Niepoprawne dane");
