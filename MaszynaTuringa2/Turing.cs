@@ -192,6 +192,7 @@
             Dwójka? polecenie;
             while ((polecenie = program.ZnajdźPolecenie(stan.BieżącyStan)) != null)
             {
+                string łańcuchOpisującyPoprzedniStan = stan.ŁańcuchOpisującyStanMaszyny;
                 stan.StanGłowicy = polecenie.Value.StanGłowicy;
                 switch (polecenie.Value.WartośćLubPolecenieNaTaśmie)
                 {
@@ -206,9 +207,31 @@
                         break;
                 }
                 historia.Add(stan.ŁańcuchOpisującyStanMaszyny);
+                onStanZmieniony(łańcuchOpisującyPoprzedniStan, stan.ŁańcuchOpisującyStanMaszyny);
             }
             return historia.ToArray();
         }
+
+        #region Zdarzenie
+        public class StanZmienionyEventArgs : EventArgs
+        {
+            public string ŁańcuchOpisującyPoprzedniStan, ŁańcuchOpisującyNowyStan;
+        }
+
+        public event EventHandler<StanZmienionyEventArgs> StanZmieniony;
+
+        private void onStanZmieniony(string łańcuchOpisującyPoprzedniStan, string łańcuchOpisującyNowyStan)
+        {
+            if (StanZmieniony != null)
+            {
+                StanZmieniony(this, new StanZmienionyEventArgs()
+                {
+                    ŁańcuchOpisującyPoprzedniStan = łańcuchOpisującyPoprzedniStan,
+                    ŁańcuchOpisującyNowyStan = łańcuchOpisującyNowyStan
+                });
+            }
+        }
+        #endregion
     }
 
     class Turing

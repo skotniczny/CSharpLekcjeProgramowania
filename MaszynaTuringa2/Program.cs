@@ -37,13 +37,8 @@ namespace MaszynaTuringa2
             try
             {
                 Turing.MaszynaTuringa maszyna = new Turing.MaszynaTuringa(łańcuchOpisującyStanMaszyny, kodProgramu);
+                maszyna.StanZmieniony += Maszyna_StanZmieniony;
                 string[] historia = maszyna.WykonajProgram();
-
-                Console.WriteLine("\nEwolucja stanu maszyny:");
-                foreach (string linia in historia)
-                {
-                    Console.WriteLine(linia);
-                }
             }
             catch (Exception exc)
             {
@@ -52,6 +47,11 @@ namespace MaszynaTuringa2
                 Console.Error.WriteLine($"Błąd: {exc.Message}");
                 Console.ForegroundColor = color;
             }
+        }
+
+        private static void Maszyna_StanZmieniony(object sender, Turing.MaszynaTuringa.StanZmienionyEventArgs e)
+        {
+            Console.WriteLine(e.ŁańcuchOpisującyNowyStan);
         }
     }
 }
