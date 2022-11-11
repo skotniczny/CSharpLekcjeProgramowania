@@ -47,7 +47,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Statystyka", "Statystyka\St
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatystykaDemo", "StatystykaDemo\StatystykaDemo.csproj", "{F47E7C15-221D-4AAB-A2E1-988B359D7640}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RejestrowanieNieprzewidzianychZdarzeń", "RejestrowanieNieprzewidzianychZdarzeń\RejestrowanieNieprzewidzianychZdarzeń.csproj", "{FE56DA85-445E-42FC-A64A-9D0CB4BD7451}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RejestrowanieNieprzewidzianychZdarzeń", "RejestrowanieNieprzewidzianychZdarzeń\RejestrowanieNieprzewidzianychZdarzeń.csproj", "{FE56DA85-445E-42FC-A64A-9D0CB4BD7451}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TypOgólny", "TypOgólny\TypOgólny.csproj", "{F39D82B4-3E60-4E47-A2C0-800EDA4B3C9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -147,6 +149,10 @@ Global
 		{FE56DA85-445E-42FC-A64A-9D0CB4BD7451}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE56DA85-445E-42FC-A64A-9D0CB4BD7451}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE56DA85-445E-42FC-A64A-9D0CB4BD7451}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F39D82B4-3E60-4E47-A2C0-800EDA4B3C9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F39D82B4-3E60-4E47-A2C0-800EDA4B3C9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F39D82B4-3E60-4E47-A2C0-800EDA4B3C9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F39D82B4-3E60-4E47-A2C0-800EDA4B3C9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
