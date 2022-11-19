@@ -8,6 +8,23 @@ namespace Osoby
         public string Nazwisko;
         public int Wiek;
 
+        protected bool czyKobieta()
+        {
+            if (string.IsNullOrEmpty(Imię))
+            {
+                throw new Exception("Brak imienia");
+            }
+            else
+            {
+                bool niewiasta = Imię.ToLower()[Imię.Length - 1] == 'a';
+                if (Imię == "Kuba" || Imię == "Barnaba")
+                {
+                    niewiasta = false;
+                }
+                return niewiasta;
+            }
+        }
+
         public override string ToString()
         {
             return $"{Imię} {Nazwisko} ({Wiek})";
@@ -33,7 +50,7 @@ namespace Osoby
 
         public new string ToString()
         {
-            return $"{base.ToString()}; {AdresZameldowania.ToString()}";
+            return $"{base.ToString()}; {(czyKobieta() ? "zameldowana w" : "zameldowany w")} {AdresZameldowania.ToString()}";
         }
     }
 
