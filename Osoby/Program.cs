@@ -31,7 +31,7 @@ namespace Osoby
     {
         public Adres AdresZameldowania;
 
-        public override string ToString()
+        public new string ToString()
         {
             return $"{base.ToString()}; {AdresZameldowania.ToString()}";
         }
@@ -56,6 +56,8 @@ namespace Osoby
             };
 
             Console.WriteLine(jk.ToString());
+            Osoba jkb = jk;
+            Console.WriteLine(jkb.ToString());
         }
     }
 }
