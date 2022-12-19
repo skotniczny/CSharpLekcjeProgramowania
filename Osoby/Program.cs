@@ -44,7 +44,12 @@ namespace Osoby
         }
     }
 
-    class OsobaZameldowana : Osoba
+    interface IPosiadaTelefonStacjonarny
+    {
+        int? NumerTelefonu { get; set; }
+    }
+
+    class OsobaZameldowana : Osoba, IPosiadaTelefonStacjonarny
     {
         public Adres AdresZameldowania;
 
@@ -52,10 +57,29 @@ namespace Osoby
         {
             return $"{base.ToString()}; {(czyKobieta() ? "zameldowana w" : "zameldowany w")} {AdresZameldowania.ToString()}";
         }
+
+        public int? NumerTelefonu { get; set; }
+
+        public bool CzyPosiadaTelefonStacjonarny
+        {
+            get
+            {
+                return NumerTelefonu.HasValue;
+            }
+        }
+    }
+
+    class Instytucja : IPosiadaTelefonStacjonarny
+    {
+        public int? NumerTelefonu { get; set; }
     }
 
     internal class Program
     {
+        static void WyświetlNumerTelefonu(IPosiadaTelefonStacjonarny telefon)
+        {
+            Console.WriteLine($"Numer telefonu: {telefon.NumerTelefonu}");
+        }
         static void Main(string[] args)
         {
             OsobaZameldowana jk = new OsobaZameldowana()
@@ -75,6 +99,15 @@ namespace Osoby
             Console.WriteLine(jk.ToString());
             Osoba jkb = jk;
             Console.WriteLine(jkb.ToString());
+
+            List<IPosiadaTelefonStacjonarny> listaTelefonów = new List<IPosiadaTelefonStacjonarny>();
+            listaTelefonów.Add(new OsobaZameldowana() { NumerTelefonu = 123456789 });
+            listaTelefonów.Add(new OsobaZameldowana() { NumerTelefonu = 987654321 });
+            listaTelefonów.Add(new Instytucja() { NumerTelefonu = 111111111 });
+            foreach (IPosiadaTelefonStacjonarny telefon in listaTelefonów)
+            {
+                WyświetlNumerTelefonu(telefon);
+            }
         }
     }
 }
