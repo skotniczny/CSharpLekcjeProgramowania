@@ -20,4 +20,35 @@
             return $"{imię} {nazwisko}, {stanowisko} ({pensja:C})";
         }
     }
+
+    public class Kierownik : Pracownik
+    {
+        public const decimal dodatekFunkcyjny = 300;
+
+        public Kierownik(string imię, string nazwisko, string stanowisko, decimal pensjaPodstawowa) : base(imię, nazwisko, stanowisko, pensjaPodstawowa + dodatekFunkcyjny)
+        {
+
+        }
+
+        private List<Pracownik> podwładni = new List<Pracownik>();
+
+        public void DodajPodwładnego(Pracownik pracownik)
+        {
+            podwładni.Add(pracownik);
+        }
+
+        public override string ToString()
+        {
+            string s = base.ToString();
+            if (podwładni.Count > 0)
+            {
+                s += "\nPodwładni:";
+                foreach (Pracownik podwładny in podwładni)
+                {
+                    s += $"\n {podwładny}";
+                }
+            }
+            return s;
+        }
+    }
 }
