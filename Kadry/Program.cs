@@ -16,7 +16,7 @@
             dziekan.DodajPodwładnego(kierownikZakładu);
             kierownikZakładu.DodajPodwładnego(new Pracownik("Jacek", "Matulewski", "adiunkt", 4000));
             kierownikZakładu.DodajPodwładnego(new Pracownik("Karolina", "Skowronek", "asystent", 3000));
-
+            //kierownikZakładu.DodajPodwładnego(dziekan);
             Console.WriteLine(rektor.ToString());
         }
     }
