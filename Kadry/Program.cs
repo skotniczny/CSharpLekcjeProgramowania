@@ -20,6 +20,17 @@
             OdwiedzającyWyświetlającyInformacje odwiedzającyWyświetlającyInformacje = new OdwiedzającyWyświetlającyInformacje();
             rektor.PrzyjmijWizytę(odwiedzającyWyświetlającyInformacje);
             rektor.PrzyjmijWizytę(odwiedzającyWyświetlającyInformacje);
+
+            OdwiedzającyLista odwiedzającyLista = new OdwiedzającyLista();
+            rektor.PrzyjmijWizytę(odwiedzającyLista);
+            Console.WriteLine($"\nLista pracowników {odwiedzającyLista.ListaPracowników.Count}");
+            foreach (var element in odwiedzającyLista.ListaPracowników)
+            {
+                Console.WriteLine(element.ToString());
+            }
+
+            OdwiedzającyWyświetlającyFunkcje odwiedzającyWyświetlającyFunkcje = new OdwiedzającyWyświetlającyFunkcje();
+            rektor.PrzyjmijWizytę(odwiedzającyWyświetlającyFunkcje);
         }
     }
 }

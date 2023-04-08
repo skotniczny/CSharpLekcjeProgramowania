@@ -1,4 +1,6 @@
-﻿namespace Kadry
+﻿using Kadry;
+
+namespace Kadry
 {
     public interface IOdwiedzany
     {
@@ -95,7 +97,7 @@
         }
     }
 
-    public class OdwiedzającyWyświetlającyInformacje : IOdwiedzający
+public class OdwiedzającyWyświetlającyInformacje : IOdwiedzający
     {
         private static string przygotujWcięcie(int głębokość)
         {
@@ -107,5 +109,40 @@
         {
             Console.WriteLine(przygotujWcięcie(głębokość) + pracownik.ToString());
         }
+    }
+}
+
+public class OdwiedzającyLista : IOdwiedzający
+{
+    public List<IOdwiedzany> ListaPracowników { get; private set; } = new List<IOdwiedzany>();
+
+    public void Odwiedź(IOdwiedzany odwiedzany, int głębokość)
+    {
+        ListaPracowników.Add(odwiedzany);
+    }
+}
+
+public class OdwiedzającyWyświetlającyFunkcje : IOdwiedzający
+{
+    private static string przygotujWcięcie(int głębokość)
+    {
+        string s = "";
+        for (int i = 0; i < głębokość; ++i) s += " ";
+        return s;
+    }
+
+    private static string pobierzFunkcję(IOdwiedzany odwiedzany)
+    {
+        switch (odwiedzany)
+        {
+            case Kierownik kierownik: return "kierownik";
+            case Pracownik pracownik: return "pracownik";
+            default: return "nieznany";
+        }
+    }
+
+    public void Odwiedź(IOdwiedzany pracownik, int głębokość)
+    {
+        Console.WriteLine(przygotujWcięcie(głębokość) + pobierzFunkcję(pracownik));
     }
 }
