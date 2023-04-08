@@ -60,4 +60,12 @@
             }
         }
     }
+
+    public class OdwiedzającyWyświetlającyInformacje : IOdwiedzający
+    {
+        public void Odwiedź(IOdwiedzany pracownik)
+        {
+            Console.WriteLine(pracownik.ToString());
+        }
+    }
 }
