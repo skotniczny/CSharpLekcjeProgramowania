@@ -2,12 +2,12 @@
 {
     public interface IOdwiedzany
     {
-        void PrzyjmijWizytę(IOdwiedzający odwiedzający);
+        void PrzyjmijWizytę(IOdwiedzający odwiedzający, int głębokość);
     }
 
     public interface IOdwiedzający
     {
-        void Odwiedź(IOdwiedzany pracownik);
+        void Odwiedź(IOdwiedzany pracownik, int głębokość);
     }
     public class Pracownik : IOdwiedzany
     {
@@ -29,9 +29,9 @@
             return $"{imię} {nazwisko}, {stanowisko} ({pensja:C})";
         }
 
-        public virtual void PrzyjmijWizytę(IOdwiedzający odwiedzający)
+        public virtual void PrzyjmijWizytę(IOdwiedzający odwiedzający, int głębokość)
         {
-            odwiedzający.Odwiedź(this);
+            odwiedzający.Odwiedź(this, głębokość);
         }
     }
 
@@ -51,21 +51,27 @@
             podwładni.Add(pracownik);
         }
 
-        public override void PrzyjmijWizytę(IOdwiedzający odwiedzający)
+        public override void PrzyjmijWizytę(IOdwiedzający odwiedzający, int głębokość = 0)
         {
-            base.PrzyjmijWizytę(odwiedzający);
+            base.PrzyjmijWizytę(odwiedzający, głębokość);
             foreach (Pracownik podwładny in podwładni)
             {
-                podwładny.PrzyjmijWizytę(odwiedzający);
+                podwładny.PrzyjmijWizytę(odwiedzający, głębokość + 1);
             }
         }
     }
 
     public class OdwiedzającyWyświetlającyInformacje : IOdwiedzający
     {
-        public void Odwiedź(IOdwiedzany pracownik)
+        private static string przygotujWcięcie(int głębokość)
         {
-            Console.WriteLine(pracownik.ToString());
+            string s = "";
+            for (int i = 0; i < głębokość; ++i) s += " ";
+            return s;
+        }
+        public void Odwiedź(IOdwiedzany pracownik, int głębokość)
+        {
+            Console.WriteLine(przygotujWcięcie(głębokość) + pracownik.ToString());
         }
     }
 }
