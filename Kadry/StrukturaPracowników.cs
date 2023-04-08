@@ -1,6 +1,15 @@
 ﻿namespace Kadry
 {
-    public class Pracownik
+    public interface IOdwiedzany
+    {
+        void PrzyjmijWizytę(IOdwiedzający odwiedzający);
+    }
+
+    public interface IOdwiedzający
+    {
+        void Odwiedź(IOdwiedzany pracownik);
+    }
+    public class Pracownik : IOdwiedzany
     {
         private string imię;
         private string nazwisko;
@@ -18,6 +27,11 @@
         public override string ToString()
         {
             return $"{imię} {nazwisko}, {stanowisko} ({pensja:C})";
+        }
+
+        public virtual void PrzyjmijWizytę(IOdwiedzający odwiedzający)
+        {
+            odwiedzający.Odwiedź(this);
         }
     }
 
@@ -37,18 +51,13 @@
             podwładni.Add(pracownik);
         }
 
-        public override string ToString()
+        public override void PrzyjmijWizytę(IOdwiedzający odwiedzający)
         {
-            string s = base.ToString();
-            if (podwładni.Count > 0)
+            base.PrzyjmijWizytę(odwiedzający);
+            foreach (Pracownik podwładny in podwładni)
             {
-                s += "\nPodwładni:";
-                foreach (Pracownik podwładny in podwładni)
-                {
-                    s += $"\n {podwładny}";
-                }
+                podwładny.PrzyjmijWizytę(odwiedzający);
             }
-            return s;
         }
     }
 }
