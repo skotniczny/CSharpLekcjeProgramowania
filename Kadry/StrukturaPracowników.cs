@@ -16,6 +16,8 @@
         private string stanowisko;
         private decimal pensja;
 
+        protected internal bool odwiedzony = false;
+
         public Pracownik(string imię, string nazwisko, string stanowisko, decimal pensja)
         {
             this.imię = imię;
@@ -32,12 +34,20 @@
         public virtual void PrzyjmijWizytę(IOdwiedzający odwiedzający, int głębokość)
         {
             odwiedzający.Odwiedź(this, głębokość);
+            odwiedzony = true;
+        }
+
+        protected internal virtual void resetuj()
+        {
+            odwiedzony = false;
         }
     }
 
     public class Kierownik : Pracownik
     {
         public const decimal dodatekFunkcyjny = 300;
+
+        private static int? głębokośćPierwszegoKierownika = null;
 
         public Kierownik(string imię, string nazwisko, string stanowisko, decimal pensjaPodstawowa) : base(imię, nazwisko, stanowisko, pensjaPodstawowa + dodatekFunkcyjny)
         {
@@ -53,10 +63,34 @@
 
         public override void PrzyjmijWizytę(IOdwiedzający odwiedzający, int głębokość = 0)
         {
+            if (!głębokośćPierwszegoKierownika.HasValue)
+            {
+                głębokośćPierwszegoKierownika = głębokość;
+            }
             base.PrzyjmijWizytę(odwiedzający, głębokość);
             foreach (Pracownik podwładny in podwładni)
             {
-                podwładny.PrzyjmijWizytę(odwiedzający, głębokość + 1);
+                if (!podwładny.odwiedzony)
+                {
+                    podwładny.PrzyjmijWizytę(odwiedzający, głębokość + 1);
+                }
+            }
+            if (głębokość == głębokośćPierwszegoKierownika)
+            {
+                resetuj();
+                głębokośćPierwszegoKierownika = null;
+            }
+        }
+
+        protected internal override void resetuj()
+        {
+            base.resetuj();
+            foreach (Pracownik podwładny in podwładni)
+            {
+                if (podwładny.odwiedzony)
+                {
+                    podwładny.resetuj();
+                }
             }
         }
     }

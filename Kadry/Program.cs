@@ -15,7 +15,10 @@
             kierownikZakładu.DodajPodwładnego(new Pracownik("Jacek", "Matulewski", "adiunkt", 4000));
             kierownikZakładu.DodajPodwładnego(new Pracownik("Karolina", "Skowronek", "asystent", 3000));
 
+            kierownikZakładu.DodajPodwładnego(rektor);
+
             OdwiedzającyWyświetlającyInformacje odwiedzającyWyświetlającyInformacje = new OdwiedzającyWyświetlającyInformacje();
+            rektor.PrzyjmijWizytę(odwiedzającyWyświetlającyInformacje);
             rektor.PrzyjmijWizytę(odwiedzającyWyświetlającyInformacje);
         }
     }
