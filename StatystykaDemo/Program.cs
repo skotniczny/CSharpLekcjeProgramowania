@@ -26,6 +26,11 @@
             Console.WriteLine(parametryStatystyczne.ToString());
 
             Console.WriteLine(Statystyka.ParametryStatystyczne.Opis(tablica));
+
+            Console.WriteLine("Z Histogramem");
+
+            Statystyka.ParametryStatystyczneZHistogramem parametryStatystyczneZHistogramem = new Statystyka.ParametryStatystyczneZHistogramem(tablica, 11);
+            Console.WriteLine(parametryStatystyczneZHistogramem.ToString());
         }
     }
 }

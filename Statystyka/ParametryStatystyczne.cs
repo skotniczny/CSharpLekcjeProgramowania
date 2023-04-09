@@ -55,4 +55,23 @@ namespace Statystyka
             return new ParametryStatystyczne(dane).ToString();
         }
     }
+
+    public class ParametryStatystyczneZHistogramem : ParametryStatystyczne
+    {
+        public int[] Histogram { get; private set; }
+
+        public ParametryStatystyczneZHistogramem(IEnumerable<double> dane, int liczbaPrzedziałów) : base(dane)
+        {
+            Histogram = Statystyka.Histogram(dane, liczbaPrzedziałów);
+        }
+
+        public override string ToString()
+        {
+            string s = base.ToString();
+            s += "Histogram: ";
+            foreach (int liczebność in Histogram) s += liczebność.ToString() + '\t';
+            s = s.TrimEnd('\t') + "\n";
+            return s;
+        }
+    }
 }
