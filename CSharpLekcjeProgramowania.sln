@@ -57,6 +57,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Osoby", "Osoby\Osoby.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kadry", "Kadry\Kadry.csproj", "{578E0710-BE50-4B3B-8E73-D74B5CB413E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konsola", "Konsola\Konsola.csproj", "{47AB4A69-A295-4522-BEDF-A76AA6DA830B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -171,6 +173,10 @@ Global
 		{578E0710-BE50-4B3B-8E73-D74B5CB413E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{578E0710-BE50-4B3B-8E73-D74B5CB413E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{578E0710-BE50-4B3B-8E73-D74B5CB413E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47AB4A69-A295-4522-BEDF-A76AA6DA830B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47AB4A69-A295-4522-BEDF-A76AA6DA830B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47AB4A69-A295-4522-BEDF-A76AA6DA830B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47AB4A69-A295-4522-BEDF-A76AA6DA830B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
