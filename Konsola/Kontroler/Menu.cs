@@ -4,6 +4,7 @@ namespace Konsola.Kontroler
 {
     using static Wejście;
     using Model;
+    using Widok;
 
     public class Menu
     {
@@ -21,10 +22,25 @@ namespace Konsola.Kontroler
         }
 
         private UstawieniaKonsoli ustawienia;
+        private UstawieniaKonsoli poprzednieUstawienia = PomocnikUstawieńKonsoli.UstawieniaBieżące;
+
+        private void spróbujZastosowaćUstawienia()
+        {
+            if (StosowanieUstawieńKonsoli.ZastosujUstawienia(ustawienia))
+            {
+                poprzednieUstawienia = (UstawieniaKonsoli)ustawienia.Clone();
+            }
+            else
+            {
+                Console.Error.WriteLine("Przywracam poprzednie ustawienia");
+                StosowanieUstawieńKonsoli.ZastosujUstawienia(poprzednieUstawienia);
+            }
+        }
 
         public Menu(UstawieniaKonsoli ustawienia)
         {
             this.ustawienia = ustawienia;
+            spróbujZastosowaćUstawienia();
         }
 
         public void Uruchom()
@@ -83,6 +99,7 @@ namespace Konsola.Kontroler
                         ustawienia.Tytuł = tytuł;
                         break;
                 }
+                spróbujZastosowaćUstawienia();
             }
             while (wybór != 0);
         }

@@ -12,7 +12,7 @@ namespace Konsola.Model
             return $" {Szerokość} x {Wysokość}";
         }
     }
-    public class UstawieniaKonsoli
+    public class UstawieniaKonsoli : ICloneable
     {
         public ConsoleColor KolorTła;
         public ConsoleColor KolorCzcionki;
@@ -27,6 +27,18 @@ namespace Konsola.Model
                 $"\nRozmiar okna: {RozmiarOkna.ToString()}" +
                 $"\nRozmiar bufora: {RozmiarBufora.ToString()}" +
                 $"\nTytuł: {Tytuł}";
+        }
+
+        public object Clone()
+        {
+            return new UstawieniaKonsoli()
+            {
+                KolorTła = this.KolorTła,
+                KolorCzcionki = this.KolorCzcionki,
+                RozmiarOkna = this.RozmiarOkna,
+                RozmiarBufora = this.RozmiarBufora,
+                Tytuł = this.Tytuł
+            };
         }
     }
 }
