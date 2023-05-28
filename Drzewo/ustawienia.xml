@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Ustawienia zapisane przez program Konsola.dll-->
+<ustawienia tytuł="Tytuł">
+  <kolory>
+    <tło>DarkBlue</tło>
+    <czcionka>White</czcionka>
+  </kolory>
+  <rozmiary>
+    <okno>
+      <X>110</X>
+      <Y>35</Y>
+    </okno>
+    <bufor>
+      <X>110</X>
+      <Y>35</Y>
+    </bufor>
+  </rozmiary>
+</ustawienia>
