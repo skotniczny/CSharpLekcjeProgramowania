@@ -69,5 +69,29 @@ namespace Konsola.Model
             // zapis do pliku
             xml.Save(ścieżkaPliku);
         }
+
+        public static UstawieniaKonsoli Czytaj(string ścieżkaPliku)
+        {
+            XDocument xml = XDocument.Load(ścieżkaPliku);
+            UstawieniaKonsoli ustawienia = new UstawieniaKonsoli();
+
+            // odczytywanie tytułu okna
+            ustawienia.Tytuł = xml.Root.Attribute("tytuł").Value;
+
+            // odczytywanie kolorów
+            XElement element = xml.Root.Element("kolory");
+            ustawienia.KolorTła = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), element.Element("tło").Value);
+            ustawienia.KolorCzcionki = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), element.Element("czcionka").Value);
+
+            // odczytywanie rozmiaru okna i bufora
+            element = xml.Root.Element("rozmiary").Element("okno");
+            ustawienia.RozmiarOkna.Szerokość = int.Parse(element.Element("X").Value);
+            ustawienia.RozmiarOkna.Wysokość = int.Parse(element.Element("Y").Value);
+            element = xml.Root.Element("rozmiary").Element("bufor");
+            ustawienia.RozmiarBufora.Szerokość = int.Parse(element.Element("X").Value);
+            ustawienia.RozmiarBufora.Wysokość = int.Parse(element.Element("Y").Value);
+
+            return ustawienia;
+        }
     }
 }

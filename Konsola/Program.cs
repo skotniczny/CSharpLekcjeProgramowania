@@ -9,7 +9,18 @@
 
         static void Main(string[] args)
         {
-            UstawieniaKonsoli model = PomocnikUstawieńKonsoli.UstawieniaBieżące;
+            #region Inicjacja
+            UstawieniaKonsoli model;
+            try
+            {
+                model = PomocnikXml.Czytaj(ścieżkaPliku);
+            }
+            catch (Exception exc)
+            {
+                model = PomocnikUstawieńKonsoli.UstawieniaDomyślne;
+                Console.Error.WriteLine($"Błąd: {exc.Message}. Stosuję ustawienia domyślne");
+            }
+            #endregion
 
             Menu kontroler = new Menu(model);
             kontroler.Uruchom();
