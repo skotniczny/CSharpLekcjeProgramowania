@@ -8,6 +8,7 @@ namespace Drzewo
         {
             XDocument xml = XDocument.Load("ustawienia.xml");
             Węzeł drzewo = xml.TwórzDrzewo();
+            drzewo.Wyświetl();
         }
     }
 }

@@ -50,5 +50,16 @@ namespace Drzewo
             dodajWęzeł(xml.Root, drzewo);
             return drzewo;
         }
+
+        public static void Wyświetl(this Węzeł węzeł, int poziom = 0)
+        {
+            for (int i = 0; i < poziom; ++i) Console.Write(" ");
+            Console.WriteLine(węzeł.ToString());
+            poziom++;
+            foreach (Węzeł podwęzeł in węzeł.Węzły)
+            {
+                Wyświetl(podwęzeł, poziom);
+            }
+        }
     }
 }
