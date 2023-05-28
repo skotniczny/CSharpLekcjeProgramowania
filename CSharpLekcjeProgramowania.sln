@@ -55,9 +55,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WariancjaTypówParametryczn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Osoby", "Osoby\Osoby.csproj", "{F5F481C7-BABE-4782-B155-7F3A2BE52B16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kadry", "Kadry\Kadry.csproj", "{578E0710-BE50-4B3B-8E73-D74B5CB413E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kadry", "Kadry\Kadry.csproj", "{578E0710-BE50-4B3B-8E73-D74B5CB413E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konsola", "Konsola\Konsola.csproj", "{47AB4A69-A295-4522-BEDF-A76AA6DA830B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Konsola", "Konsola\Konsola.csproj", "{47AB4A69-A295-4522-BEDF-A76AA6DA830B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KursyWalut", "KursyWalut\KursyWalut.csproj", "{83107920-80FF-43C2-925B-D42D0B2A064E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -177,6 +179,10 @@ Global
 		{47AB4A69-A295-4522-BEDF-A76AA6DA830B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47AB4A69-A295-4522-BEDF-A76AA6DA830B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47AB4A69-A295-4522-BEDF-A76AA6DA830B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83107920-80FF-43C2-925B-D42D0B2A064E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83107920-80FF-43C2-925B-D42D0B2A064E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83107920-80FF-43C2-925B-D42D0B2A064E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83107920-80FF-43C2-925B-D42D0B2A064E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
