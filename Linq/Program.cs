@@ -55,5 +55,18 @@ class Program
         bool czyZawieraPelnoletnią = listaOsób.Any(osoba => osoba.Wiek > 18);
         Console.WriteLine($"Czy wszystkie pełnoletnie: `listaOsóbPełnoletnich` {czyWszystkiePełnoletnie}");
         Console.WriteLine($"Czy zawiera pełnoletnią: `listaOsób` {czyZawieraPelnoletnią}");
+
+        // Prezentacja w grupach
+        Console.WriteLine();
+        var grupyOsóbOTymSamymNazwisku = from osoba in listaOsób
+                                         group osoba by osoba.Nazwisko into grupa
+                                         select grupa;
+        Console.WriteLine("Lista osób pogrupowanych według nazwisk:");
+        foreach (var grupa in grupyOsóbOTymSamymNazwisku)
+        {
+            Console.WriteLine($"Grupa osób o nazwisku {grupa.Key}");
+            foreach (Osoba osoba in grupa) Console.WriteLine($"{osoba.Imię} {osoba.Nazwisko}");
+            Console.WriteLine();
+        }
     }
 }
