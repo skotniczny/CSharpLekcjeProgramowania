@@ -80,5 +80,26 @@ class Program
         //var listaPełnoletnich_I_Kobiet = listaOsóbPełnoletnich1.Concat(listaKobiet).Distinct();
         var listaPełnoletnich_I_Kobiet = listaOsóbPełnoletnich1.Union(listaKobiet);
         var listaPełnoletnichNieKobiet = listaOsóbPełnoletnich1.Except(listaKobiet);
+
+        // Łączenie danych z różnych źródeł (operator join)
+        var listaTelefonów = from osoba in listaOsób
+                             select new { osoba.Id, osoba.NumerTelefonu };
+        var listaPersonaliów = from osoba in listaOsób
+                               select new { osoba.Id, osoba.Imię, osoba.Nazwisko };
+
+        var listaPersonaliówZTelefonami = from telefon in listaTelefonów
+                                          join personalia in listaPersonaliów
+                                          on telefon.Id equals personalia.Id
+                                          select new
+                                          {
+                                              telefon.Id,
+                                              personalia.Imię,
+                                              personalia.Nazwisko,
+                                              telefon.NumerTelefonu
+                                          };
+
+        foreach (var telefon in listaTelefonów) Console.WriteLine(telefon.ToString());
+        foreach (var osoba in listaPersonaliów) Console.WriteLine(osoba.ToString());
+        foreach (var osoba in listaPersonaliówZTelefonami) Console.WriteLine(osoba.ToString());
     }
 }
