@@ -48,5 +48,12 @@ class Program
         Console.WriteLine();
         var najstarszaOsoba = listaOsóbPełnoletnich.Single(osoba1 => (osoba1.Wiek == listaOsóbPełnoletnich.Max(osoba => osoba.Wiek)));
         Console.WriteLine($"Najstarsza osoba: {najstarszaOsoba.ToString()}");
+
+        // Weryfikowanie danych
+        Console.WriteLine();
+        bool czyWszystkiePełnoletnie = listaOsóbPełnoletnich.All(osoba => (osoba.Wiek > 18));
+        bool czyZawieraPelnoletnią = listaOsób.Any(osoba => osoba.Wiek > 18);
+        Console.WriteLine($"Czy wszystkie pełnoletnie: `listaOsóbPełnoletnich` {czyWszystkiePełnoletnie}");
+        Console.WriteLine($"Czy zawiera pełnoletnią: `listaOsób` {czyZawieraPelnoletnią}");
     }
 }
