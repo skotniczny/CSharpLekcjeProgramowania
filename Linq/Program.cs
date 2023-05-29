@@ -37,5 +37,11 @@ class Program
         Console.WriteLine("Lista osób pełnoletnich:");
         foreach (var osoba in listaOsóbPełnoletnich)
             Console.WriteLine(osoba.ToString());
+
+        // Analiza pobranych danych
+        Console.WriteLine();
+        Console.WriteLine($"Wiek najstarszej osoby: {listaOsóbPełnoletnich.Max(osoba => osoba.Wiek)}");
+        Console.WriteLine($"Średni wiek osób pełnoletnich {listaOsóbPełnoletnich.Average(osoba => osoba.Wiek)}");
+        Console.WriteLine($"Suma last osób pełnoletnich {listaOsóbPełnoletnich.Sum(osoba => osoba.Wiek)}");
     }
 }
