@@ -23,4 +23,19 @@ class Program
         new Osoba { Id = 5, Imię = "Adam", Nazwisko = "Kowalski", NumerTelefonu = 7272023, Wiek = 6 },
         new Osoba { Id = 6, Imię = "Ewa", Nazwisko = "Mocarz", NumerTelefonu = 7272025, Wiek = 11 },
     };
+
+    static void Main(string[] args)
+    {
+        // Pobieranie danych (filtrowanie i sortowanie)
+        var listaOsóbPełnoletnich = from osoba in listaOsób
+                                    where osoba.Wiek >= 18
+                                    orderby osoba.Wiek
+                                    select osoba;
+
+        List<Osoba> podlista = listaOsóbPełnoletnich.ToList<Osoba>();
+
+        Console.WriteLine("Lista osób pełnoletnich:");
+        foreach (var osoba in listaOsóbPełnoletnich)
+            Console.WriteLine(osoba.ToString());
+    }
 }
