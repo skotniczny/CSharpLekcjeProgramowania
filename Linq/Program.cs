@@ -101,5 +101,34 @@ class Program
         foreach (var telefon in listaTelefonów) Console.WriteLine(telefon.ToString());
         foreach (var osoba in listaPersonaliów) Console.WriteLine(osoba.ToString());
         foreach (var osoba in listaPersonaliówZTelefonami) Console.WriteLine(osoba.ToString());
+
+        // Możliwość modyfikacji danych źródła
+        Console.WriteLine();
+        var listaOsóbPełnoletnich2 = from osoba in listaOsób
+                                     where osoba.Wiek >= 18
+                                     orderby osoba.Wiek
+                                     select osoba;
+
+        Osoba pierwszyNaLiście = listaOsóbPełnoletnich2.First<Osoba>();
+        Console.WriteLine(pierwszyNaLiście.ToString());
+        pierwszyNaLiście.Imię = "Karol";
+        pierwszyNaLiście.Nazwisko = "Bartnicki";
+        pierwszyNaLiście.Wiek = 31;
+        foreach (var osoba in listaOsóbPełnoletnich2)
+        {
+            Console.WriteLine(osoba.ToString());
+        }
+
+        var listaOsóbPełnoletnich3 = from osoba in listaOsób
+                                     where osoba.Wiek >= 18
+                                     orderby osoba.Wiek
+                                     select new Osoba
+                                     {
+                                         Id = osoba.Id,
+                                         Imię = osoba.Imię,
+                                         Nazwisko = osoba.Nazwisko,
+                                         NumerTelefonu = osoba.NumerTelefonu,
+                                         Wiek = osoba.Wiek,
+                                     };
     }
 }
