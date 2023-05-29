@@ -43,5 +43,10 @@ class Program
         Console.WriteLine($"Wiek najstarszej osoby: {listaOsóbPełnoletnich.Max(osoba => osoba.Wiek)}");
         Console.WriteLine($"Średni wiek osób pełnoletnich {listaOsóbPełnoletnich.Average(osoba => osoba.Wiek)}");
         Console.WriteLine($"Suma last osób pełnoletnich {listaOsóbPełnoletnich.Sum(osoba => osoba.Wiek)}");
+
+        // Wybór elementu
+        Console.WriteLine();
+        var najstarszaOsoba = listaOsóbPełnoletnich.Single(osoba1 => (osoba1.Wiek == listaOsóbPełnoletnich.Max(osoba => osoba.Wiek)));
+        Console.WriteLine($"Najstarsza osoba: {najstarszaOsoba.ToString()}");
     }
 }
