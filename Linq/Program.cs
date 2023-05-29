@@ -1,4 +1,6 @@
-﻿class Osoba
+﻿using System.Xml.Linq;
+
+class Osoba
 {
     public int Id;
     public string Imię;
@@ -9,6 +11,28 @@
     public override string ToString()
     {
         return $"{Id.ToString()}. {Imię} {Nazwisko} ({Wiek}), tel. {NumerTelefonu}";
+    }
+}
+
+static class Rozszerzenie
+{
+    public static void ZapiszDoPlikuXml(this IEnumerable<Osoba> osoby, string ścieżkaPliku)
+    {
+        XDocument xml = new XDocument(
+            new XDeclaration("1.0", "utf-8", "yes"),
+            new XElement("osoby",
+                from osoba in osoby
+                orderby osoba.Nazwisko, osoba.Imię
+                select new XElement("osoba",
+                    new XAttribute("id", osoba.Id.ToString()),
+                    new XElement("imię", osoba.Imię),
+                    new XElement("nazwiko", osoba.Nazwisko),
+                    new XElement("numerTelefonu", osoba.NumerTelefonu.ToString()),
+                    new XElement("wiek", osoba.Wiek.ToString())
+                )
+            )
+        );
+        xml.Save(ścieżkaPliku);
     }
 }
 
@@ -130,5 +154,8 @@ class Program
                                          NumerTelefonu = osoba.NumerTelefonu,
                                          Wiek = osoba.Wiek,
                                      };
+
+        // Zapisywanie danych z kolekcji do pliku XML
+        listaOsób.ZapiszDoPlikuXml("osoby.xml");
     }
 }
