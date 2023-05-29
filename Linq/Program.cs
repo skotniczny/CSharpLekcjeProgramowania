@@ -68,5 +68,17 @@ class Program
             foreach (Osoba osoba in grupa) Console.WriteLine($"{osoba.Imię} {osoba.Nazwisko}");
             Console.WriteLine();
         }
+
+        // Łączenie zbiorów danych
+        var listaOsóbPełnoletnich1 = from osoba in listaOsób
+                                     where osoba.Wiek >= 18
+                                     orderby osoba.Wiek
+                                     select new { osoba.Imię, osoba.Nazwisko, osoba.Wiek };
+        var listaKobiet = from osoba in listaOsób
+                          where osoba.Imię.EndsWith("a")
+                          select new { osoba.Imię, osoba.Nazwisko, osoba.Wiek };
+        //var listaPełnoletnich_I_Kobiet = listaOsóbPełnoletnich1.Concat(listaKobiet).Distinct();
+        var listaPełnoletnich_I_Kobiet = listaOsóbPełnoletnich1.Union(listaKobiet);
+        var listaPełnoletnichNieKobiet = listaOsóbPełnoletnich1.Except(listaKobiet);
     }
 }
