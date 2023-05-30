@@ -5,7 +5,7 @@
 
     class Program
     {
-        private const string ścieżkaPliku = "ustawienia.xml";
+        private const string ścieżkaPliku = "ustawienia.json";
 
         static void Main(string[] args)
         {
@@ -13,8 +13,7 @@
             UstawieniaKonsoli model;
             try
             {
-                //model = PomocnikXml.Czytaj(ścieżkaPliku);
-                model = Serializacja.CzytajXml(ścieżkaPliku);
+                model = Serializacja.CzytajJson(ścieżkaPliku);
             }
             catch (Exception exc)
             {
@@ -26,8 +25,7 @@
             Menu kontroler = new Menu(model);
             kontroler.Uruchom();
 
-            //model.Zapisz(ścieżkaPliku);
-            model.ZapiszXml(ścieżkaPliku);
+            model.ZapiszJson(ścieżkaPliku);
             Console.WriteLine($"Ustawiwania zapisane do pliku {ścieżkaPliku}");
         }
     }

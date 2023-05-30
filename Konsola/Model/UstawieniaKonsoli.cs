@@ -4,8 +4,8 @@ namespace Konsola.Model
 {
     public struct Rozmiar
     {
-        public int Szerokość;
-        public int Wysokość;
+        public int Szerokość { get; set; }
+        public int Wysokość { get; set; }
 
         public override string ToString()
         {
@@ -14,11 +14,11 @@ namespace Konsola.Model
     }
     public class UstawieniaKonsoli : ICloneable
     {
-        public ConsoleColor KolorTła;
-        public ConsoleColor KolorCzcionki;
-        public Rozmiar RozmiarOkna;
-        public Rozmiar RozmiarBufora;
-        public string Tytuł;
+        public ConsoleColor KolorTła { get; set; }
+        public ConsoleColor KolorCzcionki { get; set; }
+        public Rozmiar RozmiarOkna { get; set; }
+        public Rozmiar RozmiarBufora { get; set; }
+        public string Tytuł { get; set; }
 
         public override string ToString()
         {

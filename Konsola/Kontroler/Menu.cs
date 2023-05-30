@@ -60,6 +60,7 @@ namespace Konsola.Kontroler
                         ustawienia.KolorCzcionki = PomocnikUstawieńKonsoli.UstawieniaDomyślne.KolorCzcionki;
                         ustawienia.RozmiarOkna = PomocnikUstawieńKonsoli.UstawieniaDomyślne.RozmiarOkna;
                         ustawienia.RozmiarBufora = PomocnikUstawieńKonsoli.UstawieniaDomyślne.RozmiarBufora;
+                        ustawienia.Tytuł = PomocnikUstawieńKonsoli.UstawieniaDomyślne.Tytuł;
                         break;
                     case 2:
                         ConsoleColor kolorTła = PobierzOdUżytkownikaKolor("Podaj kolor tła (po angielsku): ");

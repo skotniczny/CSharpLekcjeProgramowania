@@ -12,12 +12,12 @@ namespace Konsola.Model
                 {
                     KolorTła = Console.BackgroundColor,
                     KolorCzcionki = Console.ForegroundColor,
-                    RozmiarOkna =
+                    RozmiarOkna = new Rozmiar()
                     {
                         Szerokość = Console.WindowWidth,
                         Wysokość = Console.WindowHeight
                     },
-                    RozmiarBufora =
+                    RozmiarBufora = new Rozmiar()
                     {
                         Szerokość = Console.BufferWidth,
                         Wysokość = Console.BufferHeight
@@ -31,8 +31,8 @@ namespace Konsola.Model
         {
             KolorTła = ConsoleColor.Black,
             KolorCzcionki = ConsoleColor.Gray,
-            RozmiarOkna = { Szerokość = 120, Wysokość = 30 },
-            RozmiarBufora = { Szerokość = 120, Wysokość = 9001 },
+            RozmiarOkna = new Rozmiar { Szerokość = 120, Wysokość = 30 },
+            RozmiarBufora = new Rozmiar { Szerokość = 120, Wysokość = 9001 },
             Tytuł = System.Reflection.Assembly.GetEntryAssembly().Location
         };
 

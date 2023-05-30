@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text.Json;
 using System.Xml.Serialization;
 
 namespace Konsola.Model
@@ -44,6 +45,23 @@ namespace Konsola.Model
             {
                 reader.Close();
             }
+        }
+
+        public static void ZapiszJson(this UstawieniaKonsoli ustawiania, string ścieżkaPliku)
+        {
+            JsonSerializerOptions jsonOptions = new JsonSerializerOptions()
+            {
+                WriteIndented = true
+            };
+            string jsonText = JsonSerializer.Serialize(ustawiania, jsonOptions);
+            File.WriteAllText(ścieżkaPliku, jsonText);
+        }
+
+        public static UstawieniaKonsoli CzytajJson(string ścieżkaPliku)
+        {
+            string jsonText = File.ReadAllText(ścieżkaPliku);
+            UstawieniaKonsoli ustawienia = JsonSerializer.Deserialize<UstawieniaKonsoli>(jsonText);
+            return ustawienia;
         }
     }
 }
