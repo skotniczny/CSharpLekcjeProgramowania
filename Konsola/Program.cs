@@ -13,7 +13,8 @@
             UstawieniaKonsoli model;
             try
             {
-                model = PomocnikXml.Czytaj(ścieżkaPliku);
+                //model = PomocnikXml.Czytaj(ścieżkaPliku);
+                model = Serializacja.CzytajXml(ścieżkaPliku);
             }
             catch (Exception exc)
             {
@@ -25,7 +26,8 @@
             Menu kontroler = new Menu(model);
             kontroler.Uruchom();
 
-            model.Zapisz(ścieżkaPliku);
+            //model.Zapisz(ścieżkaPliku);
+            model.ZapiszXml(ścieżkaPliku);
             Console.WriteLine($"Ustawiwania zapisane do pliku {ścieżkaPliku}");
         }
     }
