@@ -189,6 +189,6 @@ class Program
         listaOsób.ZapiszDoPlikuXml("osoby.xml");
 
         // Zapisywanie danych z kolekcji do pliku CSV
-        listaOsób.ZapiszDoPlikuCsv("osoby.csv");
+        listaOsób.ZapiszDoPlikuCsv("osoby.csv", ';');
     }
 }
