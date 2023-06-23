@@ -64,6 +64,31 @@ static class Rozszerzenie
         }
         System.IO.File.WriteAllLines(ścieżkaPliku, linie);
     }
+
+    public static Osoba[] CzytajZPlikuCsv(string ścieżkaPliku, char separtator = ',')
+    {
+        Osoba konwertujWartościDoObiektu(string[] wartości)
+        {
+            Osoba rektord = new Osoba()
+            {
+                Id = int.Parse(wartości[0]),
+                Imię = wartości[1],
+                Nazwisko = wartości[2],
+                NumerTelefonu = int.Parse(wartości[3]),
+                Wiek = int.Parse(wartości[4])
+            };
+            return rektord;
+        }
+
+        string[] linie = System.IO.File.ReadAllLines(ścieżkaPliku);
+        List<Osoba> elementy = new List<Osoba>(linie.Length);
+        foreach (string line in linie) {
+            string[] wartości =line.Split(separtator);
+            Osoba element = konwertujWartościDoObiektu(wartości);
+            elementy.Add(element);
+        }
+        return elementy.ToArray();
+    }
 }
 
 class Program
@@ -190,5 +215,13 @@ class Program
 
         // Zapisywanie danych z kolekcji do pliku CSV
         listaOsób.ZapiszDoPlikuCsv("osoby.csv", ';');
+
+        Osoba[] tablicaOsób = Rozszerzenie.CzytajZPlikuCsv("osoby.csv", ';');
+
+        Console.WriteLine("\nDane odczytane z CSV:");
+        foreach (Osoba osoba in tablicaOsób)
+        {
+            Console.WriteLine(osoba.ToString());
+        }
     }
 }
