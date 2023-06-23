@@ -1,6 +1,6 @@
 ﻿using System.Xml.Linq;
 
-class Osoba
+class Osoba : Rozszerzenie.IRekordCsv<Osoba>
 {
     public int Id;
     public string Imię;
@@ -11,6 +11,26 @@ class Osoba
     public override string ToString()
     {
         return $"{Id.ToString()}. {Imię} {Nazwisko} ({Wiek}), tel. {NumerTelefonu}";
+    }
+
+    public string[] KonwertujObiektDoWartości(Osoba element)
+    {
+        string[] wartości = new string[5];
+        wartości[0] = element.Id.ToString();
+        wartości[1] = element.Imię;
+        wartości[2] = element.Nazwisko;
+        wartości[3] = element.NumerTelefonu.ToString();
+        wartości[4] = element.Wiek.ToString();
+        return wartości;
+    }
+
+    public void KonwertujWartościDoObiektu(string[] wartości)
+    {
+        Id = int.Parse(wartości[0]);
+        Imię = wartości[1];
+        Nazwisko = wartości[2];
+        NumerTelefonu = int.Parse(wartości[3]);
+        Wiek = int.Parse(wartości[4]);
     }
 }
 
@@ -35,7 +55,7 @@ static class Rozszerzenie
         xml.Save(ścieżkaPliku);
     }
 
-    public static void ZapiszDoPlikuCsv(this IEnumerable<Osoba> elementy, string ścieżkaPliku, char separator = ',')
+    public static void ZapiszDoPlikuCsv<T>(this IEnumerable<T> elementy, string ścieżkaPliku, char separator = ',') where T : IRekordCsv<T>
     {
         string łączŁańcuchy(string[] łańcuchy, char separator)
         {
@@ -44,50 +64,33 @@ static class Rozszerzenie
             return s.TrimEnd(separator);
         }
 
-        string[] konwertujObiektDoWartości(Osoba element)
-        {
-            string[] wartość = new string[5];
-            wartość[0] = element.Id.ToString();
-            wartość[1] = element.Imię;
-            wartość[2] = element.Nazwisko;
-            wartość[3] = element.NumerTelefonu.ToString();
-            wartość[4] = element.Wiek.ToString();
-            return wartość;
-        }
-
         List<string> linie = new List<string>(elementy.Count());
-        foreach (Osoba element in elementy)
+        foreach (T element in elementy)
         {
-            string[] wartości = konwertujObiektDoWartości(element);
+            string[] wartości = element.KonwertujObiektDoWartości(element);
             string linia = łączŁańcuchy(wartości, separator);
             linie.Add(linia);
         }
         System.IO.File.WriteAllLines(ścieżkaPliku, linie);
     }
 
-    public static Osoba[] CzytajZPlikuCsv(string ścieżkaPliku, char separtator = ',')
+    public static T[] CzytajZPlikuCsv<T>(string ścieżkaPliku, char separtator = ',') where T : IRekordCsv<T>, new()
     {
-        Osoba konwertujWartościDoObiektu(string[] wartości)
-        {
-            Osoba rektord = new Osoba()
-            {
-                Id = int.Parse(wartości[0]),
-                Imię = wartości[1],
-                Nazwisko = wartości[2],
-                NumerTelefonu = int.Parse(wartości[3]),
-                Wiek = int.Parse(wartości[4])
-            };
-            return rektord;
-        }
-
         string[] linie = System.IO.File.ReadAllLines(ścieżkaPliku);
-        List<Osoba> elementy = new List<Osoba>(linie.Length);
+        List<T> elementy = new List<T>(linie.Length);
         foreach (string line in linie) {
             string[] wartości =line.Split(separtator);
-            Osoba element = konwertujWartościDoObiektu(wartości);
+            T element = new T();
+            element.KonwertujWartościDoObiektu(wartości);
             elementy.Add(element);
         }
         return elementy.ToArray();
+    }
+
+    public interface IRekordCsv<T>
+    {
+        string[] KonwertujObiektDoWartości(T element);
+        void KonwertujWartościDoObiektu(string[] wartości);
     }
 }
 
@@ -216,7 +219,7 @@ class Program
         // Zapisywanie danych z kolekcji do pliku CSV
         listaOsób.ZapiszDoPlikuCsv("osoby.csv", ';');
 
-        Osoba[] tablicaOsób = Rozszerzenie.CzytajZPlikuCsv("osoby.csv", ';');
+        Osoba[] tablicaOsób = Rozszerzenie.CzytajZPlikuCsv<Osoba>("osoby.csv", ';');
 
         Console.WriteLine("\nDane odczytane z CSV:");
         foreach (Osoba osoba in tablicaOsób)
