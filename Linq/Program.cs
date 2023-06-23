@@ -34,6 +34,36 @@ static class Rozszerzenie
         );
         xml.Save(ścieżkaPliku);
     }
+
+    public static void ZapiszDoPlikuCsv(this IEnumerable<Osoba> elementy, string ścieżkaPliku, char separator = ',')
+    {
+        string łączŁańcuchy(string[] łańcuchy, char separator)
+        {
+            string s = "";
+            foreach (string łańcuch in łańcuchy) s += łańcuch + separator;
+            return s.TrimEnd(separator);
+        }
+
+        string[] konwertujObiektDoWartości(Osoba element)
+        {
+            string[] wartość = new string[5];
+            wartość[0] = element.Id.ToString();
+            wartość[1] = element.Imię;
+            wartość[2] = element.Nazwisko;
+            wartość[3] = element.NumerTelefonu.ToString();
+            wartość[4] = element.Wiek.ToString();
+            return wartość;
+        }
+
+        List<string> linie = new List<string>(elementy.Count());
+        foreach (Osoba element in elementy)
+        {
+            string[] wartości = konwertujObiektDoWartości(element);
+            string linia = łączŁańcuchy(wartości, separator);
+            linie.Add(linia);
+        }
+        System.IO.File.WriteAllLines(ścieżkaPliku, linie);
+    }
 }
 
 class Program
@@ -157,5 +187,8 @@ class Program
 
         // Zapisywanie danych z kolekcji do pliku XML
         listaOsób.ZapiszDoPlikuXml("osoby.xml");
+
+        // Zapisywanie danych z kolekcji do pliku CSV
+        listaOsób.ZapiszDoPlikuCsv("osoby.csv");
     }
 }
