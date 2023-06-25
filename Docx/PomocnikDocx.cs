@@ -28,6 +28,11 @@ namespace Docx
             return akapit;
         }
 
+        private static Paragraph twórzAkapit(Drawing rysunek)
+        {
+            return new Paragraph(new Run(rysunek));
+        }
+
         private static Paragraph twórzAkapitTytułu(string tytuł)
         {
             Paragraph akapitTytułu = new Paragraph();
@@ -50,6 +55,13 @@ namespace Docx
 
                 Body ciałoDokumentu = new Body();
                 głównaCzęścDokumentu.Document.AppendChild(ciałoDokumentu);
+
+                //rysunek
+                Stream strumieńRysunku = pobierzRysunekZZasobów("Docx.rysunki.helion.png");
+                //Stream strumieńRysunku = pobierzRysunekZPliku("rysunki/helion.png");
+                Drawing rysunek = twórzRysunekWDokumencie(dokumentWorda, strumieńRysunku);
+                Paragraph akapitObrazu = twórzAkapit(rysunek);
+                ciałoDokumentu.AppendChild(akapitObrazu);
 
                 // nagłówek
                 string[] linieNagłówka = new string[]
@@ -86,6 +98,27 @@ namespace Docx
                 wyślijDokumentDoStrumienia(parametryStatystyczne, strumieńPliku, formatProvider);
                 strumieńPliku.Close();
             }
+        }
+
+        private static Stream pobierzRysunekZZasobów(string nazwaZasobu)
+        {
+            Assembly assembly = typeof(PomocnikDocx).GetTypeInfo().Assembly;
+            Stream strumień = assembly.GetManifestResourceStream(nazwaZasobu);
+            return strumień;
+        }
+
+        private static Stream pobierzRysunekZPliku(string ścieżkaPliku)
+        {
+            Stream strumień = new FileStream(ścieżkaPliku, FileMode.Open);
+            return strumień;
+        }
+
+        private static Drawing twórzRysunekWDokumencie(WordprocessingDocument dokumentWorda, Stream strumień)
+        {
+            MainDocumentPart częśćGłowna = dokumentWorda.MainDocumentPart;
+            ImagePart częśćRysunku = częśćGłowna.AddImagePart(ImagePartType.Png);
+            częśćRysunku.FeedData(strumień);
+            return RysunekDocx.CreateDrawingElement(dokumentWorda, częśćGłowna.GetIdOfPart(częśćRysunku), 3, 1);
         }
     }
 }
