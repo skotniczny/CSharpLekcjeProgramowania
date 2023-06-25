@@ -1,6 +1,6 @@
 ﻿namespace Docx
 {
-    public class Class1
+    public class PomocnikDocx
     {
 
     }
