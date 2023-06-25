@@ -1,4 +1,6 @@
-﻿namespace StatystykaDemo
+﻿using Docx;
+
+namespace StatystykaDemo
 {
     using static Statystyka.Statystyka;
 
@@ -31,6 +33,8 @@
 
             Statystyka.ParametryStatystyczneZHistogramem parametryStatystyczneZHistogramem = new Statystyka.ParametryStatystyczneZHistogramem(tablica, 11);
             Console.WriteLine(parametryStatystyczneZHistogramem.ToString());
+
+            parametryStatystyczneZHistogramem.EksporujDoPlikuDocx("raport.docx");
         }
     }
 }
