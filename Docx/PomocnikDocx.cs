@@ -82,6 +82,17 @@ namespace Docx
                 Paragraph akapit = twórzAkapit(linie, 25, KolorNormalny);
                 ciałoDokumentu.AppendChild(akapit);
 
+                // tabela
+                string[,] komórki = new string[3, parametryStatystyczne.Histogram.Length];
+                for (int i = 0; i < parametryStatystyczne.Histogram.Length; ++i)
+                {
+                    komórki[0, i] = (i + 2).ToString(formatProvider);
+                    komórki[1, i] = parametryStatystyczne.Histogram[i].ToString(formatProvider);
+                    komórki[2, i] = $"{(parametryStatystyczne.Histogram[i] / parametryStatystyczne.Rozmiar):p2}";
+                }
+                Table tabela = twórzTabelę(komórki, new string[] { "Suma oczek", "Liczba", "Udział" });
+                ciałoDokumentu.Append(tabela);
+
                 dokumentWorda.Close(); // zamknięcie dokumentu
             }
             stream.Flush();
@@ -119,6 +130,98 @@ namespace Docx
             ImagePart częśćRysunku = częśćGłowna.AddImagePart(ImagePartType.Png);
             częśćRysunku.FeedData(strumień);
             return RysunekDocx.CreateDrawingElement(dokumentWorda, częśćGłowna.GetIdOfPart(częśćRysunku), 3, 1);
+        }
+
+        private static Table twórzTabelę(string[,] komórki, string[] komókiNagłówka = null)
+        {
+            if (komókiNagłówka != null && komókiNagłówka.Length != komórki.GetLength(0))
+                throw new Exception("Nieprawidłowa liczba elementów nagłówka");
+            {
+                Table tabela = new Table(); //pusta tabela
+
+                uint grubośćZewnętrznejLinii = 10;
+                uint grubośćWewnętrznejLinii = 2;
+
+                // ustawienia tabeli
+                TableProperties własnościTabeli = new TableProperties(new TableBorders(
+                    new TopBorder()
+                    {
+                        Val = new EnumValue<BorderValues>(BorderValues.BasicThinLines),
+                        Size = grubośćZewnętrznejLinii
+                    },
+                    new BottomBorder()
+                    {
+                        Val = new EnumValue<BorderValues>(BorderValues.BasicThinLines),
+                        Size = grubośćZewnętrznejLinii
+                    },
+                    new LeftBorder()
+                    {
+                        Val = new EnumValue<BorderValues>(BorderValues.BasicThinLines),
+                        Size = grubośćZewnętrznejLinii
+                    },
+                    new RightBorder()
+                    {
+                        Val = new EnumValue<BorderValues>(BorderValues.BasicThinLines),
+                        Size = grubośćZewnętrznejLinii
+                    },
+                    new InsideHorizontalBorder()
+                    {
+                        Val = new EnumValue<BorderValues>(BorderValues.BasicThinLines),
+                        Size = grubośćWewnętrznejLinii
+                    },
+                    new InsideVerticalBorder()
+                    {
+                        Val = new EnumValue<BorderValues>(BorderValues.BasicThinLines),
+                        Size = grubośćWewnętrznejLinii
+                    }
+                    ));
+                tabela.AppendChild(własnościTabeli);
+
+                if (komókiNagłówka != null)
+                {
+                    TableRow wierszNagłówka = new TableRow();
+                    for (int kolumna = 0; kolumna < komókiNagłówka.Length; kolumna++)
+                    {
+                        TableCell komórkaTabeli = new TableCell();
+                        komórkaTabeli.Append(new TableCellProperties(new TableCellWidth()
+                        {
+                            Type = TableWidthUnitValues.Dxa,
+                            Width = "2400"
+                        }));
+
+                        Run ustępKomórkiTabeli = new Run(new Text(komókiNagłówka[kolumna]));
+                        ustępKomórkiTabeli.RunProperties = new RunProperties()
+                        {
+                            Bold = new Bold() { Val = OnOffValue.FromBoolean(true) },
+                            Color = KolorWyróżniony
+                        };
+
+                        komórkaTabeli.Append(new Paragraph(ustępKomórkiTabeli));
+                        wierszNagłówka.Append(komórkaTabeli);
+                    }
+                    tabela.Append(wierszNagłówka);
+                }
+
+                for (int wiersz = 0; wiersz < komórki.GetLength(1); wiersz++)
+                {
+                    TableRow wierszTabeli = new TableRow();
+                    for (int kolumna = 0; kolumna < komórki.GetLength(0); kolumna++)
+                    {
+                        TableCell komórkaTabeli = new TableCell();
+                        komórkaTabeli.Append(new TableCellProperties(new TableCellWidth()
+                        {
+                            Type = TableWidthUnitValues.Dxa, Width = "2400" // szerokość komórki
+                        }));
+                        komórkaTabeli.Append(
+                            new Paragraph(
+                                new Run(
+                                    new Text(komórki[kolumna, wiersz])))); // tekst w komórca
+                        wierszTabeli.Append(komórkaTabeli);
+                    }
+                    tabela.Append(wierszTabeli);
+                }
+                return tabela;
+            }
         }
     }
 }
