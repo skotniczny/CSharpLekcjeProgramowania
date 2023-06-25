@@ -223,5 +223,14 @@ namespace Docx
                 return tabela;
             }
         }
+
+        public static MemoryStream PobierzStrumieńDocx(this ParametryStatystyczneZHistogramem parametryStatystyczne, IFormatProvider formatProvider = null)
+        {
+            if (formatProvider == null) formatProvider = new CultureInfo("pl-PL");
+            MemoryStream strumieńWPamięci = new MemoryStream();
+            wyślijDokumentDoStrumienia(parametryStatystyczne, strumieńWPamięci, formatProvider);
+            // strumieńWPamięci.Close(); //nie neleży zamyka strumienia, jeżeli ma być użyty
+            return strumieńWPamięci;
+        }
     }
 }
