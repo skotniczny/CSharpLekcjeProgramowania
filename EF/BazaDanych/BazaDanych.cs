@@ -70,5 +70,43 @@ namespace EF.BazaDanych
 
             return osoba.Id;
         }
+
+        #region Usuwanie
+        private int[] pobierzIdentyfikatoryUżywanychAdresów()
+        {
+            return dbc.Osoby.Select(o => o.Adres.Id).Distinct().ToArray();
+        }
+
+        private Adres[] pobierzNieużywaneAdresy()
+        {
+            int[] używaneIdentyfiaktoryAdresów = pobierzIdentyfikatoryUżywanychAdresów();
+            List<Adres> nieużywaneAdresy = new List<Adres>();
+            foreach (Adres adres in dbc.Adresy)
+            {
+                if (!używaneIdentyfiaktoryAdresów.Contains(adres.Id))
+                {
+                    nieużywaneAdresy.Add(adres);
+                }
+            }
+            return nieużywaneAdresy.ToArray();
+        }
+
+        private void usuńNieużywaneAdresy()
+        {
+            dbc.Adresy.RemoveRange(pobierzNieużywaneAdresy());
+            dbc.SaveChanges();
+        }
+
+        public void UsuńOsobę(int idOsoby)
+        {
+            Osoba osoba = PobierzOsobę(idOsoby);
+            if (osoba != null)
+            {
+                dbc.Osoby.Remove(osoba);
+                dbc.SaveChanges();
+                usuńNieużywaneAdresy();
+            }
+        }
+        #endregion
     }
 }

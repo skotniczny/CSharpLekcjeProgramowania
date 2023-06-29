@@ -98,6 +98,11 @@
 
             Console.WriteLine("\nOsoby:");
             pokażOsoby(db);
+
+            int idUsuwanejOsoby = 2;
+            Console.WriteLine($"\nUsuwam osobę nr {idUsuwanejOsoby}...");
+            db.UsuńOsobę(idUsuwanejOsoby);
+            podglądBazyDanych(db);
         }
     }
 }
