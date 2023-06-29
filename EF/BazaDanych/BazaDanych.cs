@@ -39,7 +39,12 @@ namespace EF.BazaDanych
             return dbc.Osoby.FirstOrDefault(o => o.Id == idOsoby);
         }
 
-        public Osoba this[int idOsoby] => PobierzOsobę(idOsoby);
+        public Osoba this[int idOsoby]
+        {
+            get => PobierzOsobę(idOsoby);
+            set => ZmieńDaneOsoby(idOsoby, value);
+        }
+
 
         public int[] IdentyfikatoryOsób => dbc.Osoby.Select(o => o.Id).ToArray();
 
@@ -108,5 +113,16 @@ namespace EF.BazaDanych
             }
         }
         #endregion
+
+        public void ZmieńDaneOsoby(int idOsoby, Osoba noweDane)
+        {
+            Osoba osoba = PobierzOsobę(idOsoby);
+            if (osoba == null) throw new Exception("Nie ma osoby o podanym identyfiaktorze");
+            osoba.Imię = noweDane.Imię ?? osoba.Imię;
+            osoba.Nazwisko = noweDane.Nazwisko ?? osoba.Nazwisko;
+            osoba.NumerTelefonu = noweDane.NumerTelefonu ?? osoba.NumerTelefonu;
+            osoba.Adres  = noweDane.Adres ?? osoba.Adres;
+            dbc.SaveChanges();
+        }
     }
 }

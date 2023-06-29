@@ -103,6 +103,15 @@
             Console.WriteLine($"\nUsuwam osobę nr {idUsuwanejOsoby}...");
             db.UsuńOsobę(idUsuwanejOsoby);
             podglądBazyDanych(db);
+
+            Console.WriteLine("\nZmieniam dane osoby nr 1...");
+            //db.ZmieńDaneOsoby(1, new Osoba() { Imię = "Henryk", Nazwisko = "Garncarz" });
+            db[1] = new Osoba() { Imię = "Henryk", Nazwisko = "Garncarz" };
+            podglądBazyDanych(db);
+
+            Console.WriteLine("\nZmieniam adres osoby nr 1...");
+            db[1] = new Osoba() { Adres = new Adres() { Miasto = "Toruń", Ulica = "Mostowa", NumerDomu = 2, NumerMieszkania = 13 } };
+            podglądBazyDanych(db);
         }
     }
 }
