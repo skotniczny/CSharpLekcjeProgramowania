@@ -18,10 +18,25 @@
             $"\nkatalog 'Autostart' = {Environment.GetFolderPath(Environment.SpecialFolder.Startup)}" +
             $"\nkatalog domowy użytkownika = {Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}";
 
+        static string zmienne
+        {
+            get
+            {
+                string s = "";
+                System.Collections.ICollection zmienneŚrodowiskowe = Environment.GetEnvironmentVariables();
+                foreach (System.Collections.DictionaryEntry zmienna in zmienneŚrodowiskowe)
+                {
+                    s += $"{zmienna.Key} = {zmienna.Value}\n";
+                }
+                return s;
+            }
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine($"Informacje o systemie:\n{system}");
             Console.WriteLine($"\nInformacje o użytkowniku:\n{użytkownik}");
+            Console.WriteLine($"\nZmienne środowiskowe:\n{zmienne}");
         }
     }
 }
