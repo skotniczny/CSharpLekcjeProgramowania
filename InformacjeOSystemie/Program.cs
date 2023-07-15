@@ -32,11 +32,30 @@
             }
         }
 
+        static string dyski
+        {
+            get
+            {
+                string s = "";
+                System.IO.DriveInfo[] di = System.IO.DriveInfo.GetDrives();
+                foreach (System.IO.DriveInfo dysk in di)
+                {
+                    if (dysk.IsReady)
+                    {
+                        float p = 1f * dysk.TotalFreeSpace / dysk.TotalSize;
+                        s += dysk.Name + " " + dysk.VolumeLabel + " " + dysk.TotalFreeSpace + "/" + dysk.TotalSize + $" ({p:p0})\n";
+                    }
+                }
+                return s;
+            }
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine($"Informacje o systemie:\n{system}");
             Console.WriteLine($"\nInformacje o użytkowniku:\n{użytkownik}");
             Console.WriteLine($"\nZmienne środowiskowe:\n{zmienne}");
+            Console.WriteLine($"\nDyski:\n{dyski}");
         }
     }
 }
