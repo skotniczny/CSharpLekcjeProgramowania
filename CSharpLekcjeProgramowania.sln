@@ -65,9 +65,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Drzewo", "Drzewo\Drzewo.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linq", "Linq\Linq.csproj", "{9AEC4926-496C-4AED-B877-5AB3D1114324}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Docx", "Docx\Docx.csproj", "{85BEBAC8-2A01-496B-B721-32EAFE128217}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Docx", "Docx\Docx.csproj", "{85BEBAC8-2A01-496B-B721-32EAFE128217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF", "EF\EF.csproj", "{A8C1667A-5B80-4FC3-BDE9-A1555DB994A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EF", "EF\EF.csproj", "{A8C1667A-5B80-4FC3-BDE9-A1555DB994A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InformacjeOSystemie", "InformacjeOSystemie\InformacjeOSystemie.csproj", "{3C9B8D17-09FE-4648-B6AC-069D42548B5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -207,6 +209,10 @@ Global
 		{A8C1667A-5B80-4FC3-BDE9-A1555DB994A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8C1667A-5B80-4FC3-BDE9-A1555DB994A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8C1667A-5B80-4FC3-BDE9-A1555DB994A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C9B8D17-09FE-4648-B6AC-069D42548B5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C9B8D17-09FE-4648-B6AC-069D42548B5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C9B8D17-09FE-4648-B6AC-069D42548B5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C9B8D17-09FE-4648-B6AC-069D42548B5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
